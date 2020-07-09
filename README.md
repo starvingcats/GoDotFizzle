@@ -10,6 +10,8 @@ A more detailled design paper will be done in a separate file.
 
 Check out the project page of this repository on current progress, feel free to contribute to everything!
 
+Supported platforms: Windows, Linux and HTML5-Build for cross-platform
+
 ## Development
 
 ### Requirements
@@ -30,5 +32,6 @@ git clone https://github.com/starvingcats/GoDotFizzle
 
 ### Building
 
-Building Windows EXE files has been tested successfully, check issues for further building tasks.
+Building Windows EXE files and Linux executables have been tested successfully.
+HTML5 build works fine, too - this is the prefferd way to ship this on mobile platforms.
 Simply follow the GoDot project building toolchain to build executables from this project.
