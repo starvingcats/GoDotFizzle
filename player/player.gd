@@ -32,8 +32,13 @@ func _ready():
 
 func _input(event):
 
-	if Input.is_key_pressed(KEY_R):
+	if Input.is_action_just_pressed("debug_reset"):
 		get_tree().reload_current_scene()
+
+	if Input.is_action_just_pressed("test_action"):
+		print("test_action")
+		var ItemSpawner = get_parent().get_node("ItemSpawner")
+		ItemSpawner.spawn_item("TestClub")
 
 	if Input.is_action_just_pressed("pick_up"):
 		if pickitem != null and carried_object == null:
