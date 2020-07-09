@@ -23,6 +23,7 @@ var prev_shoot = false
 var shoot_blend = 0
 
 var carried_object = null
+var pickitem = null
 
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
@@ -34,6 +35,13 @@ func _input(event):
 	if Input.is_key_pressed(KEY_R):
 		get_tree().reload_current_scene()
 
+	if Input.is_action_just_pressed("pick_up"):
+		if pickitem != null and carried_object == null:
+			pickitem.pick_up(self)
+			carried_object = pickitem
+			print("Picked up!")
+		elif carried_object != null:
+			carried_object.pick_up(self)
 
 func _physics_process(delta):
 	linear_velocity += gravity * delta
@@ -57,7 +65,6 @@ func _physics_process(delta):
 
 	dir.y = 0.0
 	dir = dir.normalized()
-	print(Input.get_action_strength("move_right"))
 	
 	var jump_attempt = Input.is_action_pressed("jump")
 	var shoot_attempt = Input.is_action_pressed("shoot")
@@ -165,3 +172,22 @@ func adjust_facing(p_facing, p_target, p_step, p_adjust_rate, current_gn):
 	ang = (ang - a) * s
 	
 	return (n * cos(ang) + t * sin(ang)) * p_facing.length()
+
+
+func _on_PickupArea_body_entered(body):
+	if body.has_method("pick_up"):
+		body.pickable = true
+		pickitem = body
+		print("ja!")
+		print(body)
+		print(pickitem)
+
+
+func _on_PickupArea_body_exited(body):
+	if body.has_method("pick_up"):
+		body.pickable = false
+		if body == pickitem:
+			pickitem = null
+		print("nein!")
+		print(body)
+		print(pickitem)

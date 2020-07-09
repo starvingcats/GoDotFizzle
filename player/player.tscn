@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/controls/osb_up.png" type="Texture" id=3]
@@ -53,6 +53,10 @@ surfaces/1 = {
 "skeleton_aabb": [  ],
 "vertex_count": 625
 }
+
+[sub_resource type="CylinderShape" id=24]
+radius = 3.73708
+height = 5.53179
 
 [sub_resource type="Animation" id=5]
 resource_name = "default"
@@ -1815,6 +1819,13 @@ material/1 = null
 [node name="CarryPosition" type="Position3D" parent="Armature/Skeleton"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8612, 2.44444 )
 
+[node name="PickupArea" type="Area" parent="Armature/Skeleton"]
+transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.31535, 2.69259 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/PickupArea"]
+transform = Transform( 1, 0, 0, 0, -0.0171209, -0.999853, 0, 0.999853, -0.0171209, 0, -9.53674e-07, -1.42876e-09 )
+shape = SubResource( 24 )
+
 [node name="Bullet" type="Position3D" parent="Armature"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94071, 3.64079, 3.3802 )
 
@@ -1870,3 +1881,5 @@ stream = ExtResource( 7 )
 
 [node name="SoundJump" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 8 )
+[connection signal="body_entered" from="Armature/Skeleton/PickupArea" to="." method="_on_PickupArea_body_entered"]
+[connection signal="body_exited" from="Armature/Skeleton/PickupArea" to="." method="_on_PickupArea_body_exited"]
