@@ -3,6 +3,11 @@
 .import/
 export.cfg
 export_presets.cfg
+*.import
+bin/
+*.dll
+*.gdns
+*.gdnlib
 
 # Mono-specific ignores
 .mono/
