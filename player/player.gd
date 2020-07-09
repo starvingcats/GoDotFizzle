@@ -22,10 +22,17 @@ var max_speed = 3.1
 var prev_shoot = false
 var shoot_blend = 0
 
+var carried_object = null
+
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
 func _ready():
 	get_node("AnimationTree").set_active(true)
+
+func _input(event):
+
+	if Input.is_key_pressed(KEY_R):
+		get_tree().reload_current_scene()
 
 
 func _physics_process(delta):
