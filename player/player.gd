@@ -40,11 +40,15 @@ func _physics_process(delta):
 	var hspeed = hv.length() # Horizontal speed.
 	
 	# Player input.
-	var cam_basis = get_node("Target/Camera").get_global_transform().basis
 	var dir = Vector3() # Where does the player intend to walk to.
-	dir = (Input.get_action_strength("move_right") - Input.get_action_strength("move_left")) * cam_basis[0]
-	dir += (Input.get_action_strength("move_backwards") - Input.get_action_strength("move_forward")) * cam_basis[2]
-	dir.y = 0
+
+	# cam_basis is now the root node of player!
+	var cam_basis = self.get_global_transform().basis
+
+	dir = (Input.get_action_strength("move_left") - Input.get_action_strength("move_right")) * cam_basis[2]
+	dir += (Input.get_action_strength("move_backwards") - Input.get_action_strength("move_forward")) * cam_basis[0]
+
+	dir.y = 0.0
 	dir = dir.normalized()
 	print(Input.get_action_strength("move_right"))
 	

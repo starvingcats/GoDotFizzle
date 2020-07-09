@@ -1,7 +1,6 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
-[ext_resource path="res://player/follow_camera.gd" type="Script" id=2]
 [ext_resource path="res://player/controls/osb_up.png" type="Texture" id=3]
 [ext_resource path="res://player/controls/osb_down.png" type="Texture" id=4]
 [ext_resource path="res://player/controls/osb_left.png" type="Texture" id=5]
@@ -1656,7 +1655,7 @@ nodes/state/node = SubResource( 21 )
 nodes/state/position = Vector2( 440, 0 )
 nodes/walk/node = SubResource( 22 )
 nodes/walk/position = Vector2( -40, -240 )
-node_connections = [ "scale", 0, "walk", "output", 0, "gun", "state", 0, "scale", "state", 1, "air_dir", "walk", 0, "Animation", "walk", 1, "Animation 2", "air_dir", 0, "Animation 3", "air_dir", 1, "Animation 4", "gun", 0, "state", "gun", 1, "Animation 5" ]
+node_connections = [ "scale", 0, "walk", "output", 0, "gun", "state", 0, "scale", "state", 1, "air_dir", "gun", 0, "state", "gun", 1, "Animation 5", "air_dir", 0, "Animation 3", "air_dir", 1, "Animation 4", "walk", 0, "Animation", "walk", 1, "Animation 2" ]
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -1667,16 +1666,6 @@ __meta__ = {
 [node name="CollisionCapsule" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.04824, 0 )
 shape = SubResource( 1 )
-
-[node name="Target" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95244, 0 )
-
-[node name="Camera" type="Camera" parent="Target"]
-transform = Transform( 1, 0, 0, 0, 0.871263, 0.490817, 0, -0.490817, 0.871263, 0, 2.59805, 1.25672 )
-current = true
-fov = 74.0
-near = 0.1
-script = ExtResource( 2 )
 
 [node name="Armature" type="Spatial" parent="."]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
@@ -1822,6 +1811,9 @@ bones/26/bound_children = [  ]
 mesh = SubResource( 4 )
 material/0 = null
 material/1 = null
+
+[node name="CarryPosition" type="Position3D" parent="Armature/Skeleton"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8612, 2.44444 )
 
 [node name="Bullet" type="Position3D" parent="Armature"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94071, 3.64079, 3.3802 )
