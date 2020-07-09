@@ -25,6 +25,8 @@ var shoot_blend = 0
 var carried_object = null
 var pickitem = null
 
+var transfer_slot = null
+
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
 func _ready():
@@ -45,8 +47,12 @@ func _input(event):
 			pickitem.pick_up(self)
 			carried_object = pickitem
 			print("Picked up!")
-		elif carried_object != null:
+		elif carried_object != null and transfer_slot == null:
 			carried_object.pick_up(self)
+			carried_object = null
+		elif carried_object != null and transfer_slot != null:
+			carried_object.pick_up(transfer_slot)
+			carried_object = null
 
 func _physics_process(delta):
 	linear_velocity += gravity * delta
@@ -186,6 +192,9 @@ func _on_PickupArea_body_entered(body):
 		print("ja!")
 		print(body)
 		print(pickitem)
+	elif body.has_method("transfer"):
+		transfer_slot = body
+		print("transfer in")
 
 
 func _on_PickupArea_body_exited(body):
@@ -196,3 +205,6 @@ func _on_PickupArea_body_exited(body):
 		print("nein!")
 		print(body)
 		print(pickitem)
+	elif body.has_method("transfer"):
+		transfer_slot = null
+		print("transfer out")

@@ -6,21 +6,29 @@ extends RigidBody
 # var b = "text"
 
 var picked_up
-var holder
+var holder = null
 var pickable = false
 var orig_scale
 
-func pick_up(player):
-	holder = player
-
-	if picked_up:
+func pick_up(picker):
+	# holder = picker
+	if picker == holder or holder == null:
+		holder = picker
+		if picked_up:
+			leave()
+		else:
+			carry()
+	elif picker != holder and holder != null:
 		leave()
-	else:
+		holder = picker
 		carry()
 
 func _process(delta):
 	if picked_up:
-		set_global_transform(holder.get_node("Armature/Skeleton/CarryPosition").get_global_transform())
+		if holder.name == "Player":
+			set_global_transform(holder.get_node("Armature/Skeleton/CarryPosition").get_global_transform())
+		else:
+			set_global_transform(holder.get_node("HoldingPosition").get_global_transform())
 	if global_transform.origin.y < 1:
 		print("Clear item")
 		queue_free()
@@ -36,6 +44,7 @@ func leave():
 	holder.carried_object = null
 	self.set_mode(0)
 	picked_up = false
+	holder = null
 	self.scale = orig_scale
 
 
