@@ -21,6 +21,9 @@ func pick_up(player):
 func _process(delta):
 	if picked_up:
 		set_global_transform(holder.get_node("Armature/Skeleton/CarryPosition").get_global_transform())
+	if global_transform.origin.y < 1:
+		print("Clear item")
+		queue_free()
 
 func carry():
 	$CollisionShape.set_disabled(true)
