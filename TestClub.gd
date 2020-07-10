@@ -25,7 +25,7 @@ func pick_up(picker):
 
 func _process(delta):
 	if picked_up:
-		if holder.name == "Player":
+		if "Player" in holder.name:
 			set_global_transform(holder.get_node("Armature/Skeleton/CarryPosition").get_global_transform())
 		else:
 			set_global_transform(holder.get_node("HoldingPosition").get_global_transform())

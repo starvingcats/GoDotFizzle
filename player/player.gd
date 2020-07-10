@@ -26,11 +26,14 @@ var carried_object = null
 var pickitem = null
 
 var transfer_slot = null
+var player_prefix = ''
 
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
 func _ready():
 	get_node("AnimationTree").set_active(true)
+	if name == "Player2":
+		player_prefix = 'p2_'
 
 func _input(event):
 
@@ -42,7 +45,7 @@ func _input(event):
 		var ItemSpawner = get_parent().get_node("ItemSpawner")
 		ItemSpawner.spawn_item("TestClub")
 
-	if Input.is_action_just_pressed("pick_up"):
+	if Input.is_action_just_pressed(player_prefix + "pick_up"):
 		if pickitem != null and carried_object == null:
 			pickitem.pick_up(self)
 			carried_object = pickitem
@@ -71,14 +74,14 @@ func _physics_process(delta):
 	# cam_basis is now the root node of player!
 	var cam_basis = self.get_global_transform().basis
 
-	dir = (Input.get_action_strength("move_left") - Input.get_action_strength("move_right")) * cam_basis[2]
-	dir += (Input.get_action_strength("move_backwards") - Input.get_action_strength("move_forward")) * cam_basis[0] 
+	dir = (Input.get_action_strength(player_prefix + "move_left") - Input.get_action_strength(player_prefix + "move_right")) * cam_basis[2]
+	dir += (Input.get_action_strength(player_prefix + "move_backwards") - Input.get_action_strength(player_prefix + "move_forward")) * cam_basis[0] 
 
 	dir.y = 0.0
 	dir = dir.normalized()
 	
-	var jump_attempt = Input.is_action_pressed("jump")
-	var shoot_attempt = Input.is_action_pressed("shoot")
+	var jump_attempt = Input.is_action_pressed(player_prefix + "jump")
+	var shoot_attempt = Input.is_action_pressed(player_prefix + "shoot")
 	
 	if is_on_floor():
 		var sharp_turn = hspeed > 0.1 and rad2deg(acos(dir.dot(hdir))) > sharp_turn_threshold
