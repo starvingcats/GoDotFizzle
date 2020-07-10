@@ -1,15 +1,20 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
+[ext_resource path="res://Screw.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cubelib.tres" type="MeshLibrary" id=2]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://TestClub.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Wrench.tscn" type="PackedScene" id=4]
 [ext_resource path="res://SpawnTimer.gd" type="Script" id=5]
 [ext_resource path="res://ItemSpawner.gd" type="Script" id=6]
 [ext_resource path="res://ConveyorSpawner.gd" type="Script" id=7]
 [ext_resource path="res://ConveyorSpawnTimer.gd" type="Script" id=8]
 [ext_resource path="res://ConveyorSlot.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ItemCount.gd" type="Script" id=10]
+[ext_resource path="res://foerderband_mid.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Environment" id=1]
+
+[sub_resource type="PhysicsMaterial" id=3]
 
 [sub_resource type="Curve3D" id=2]
 _data = {
@@ -20,12 +25,11 @@ _data = {
 [node name="DemoScene" type="Spatial"]
 
 [node name="ItemSpawnTimer" type="Timer" parent="."]
-wait_time = 1.04
-autostart = true
+wait_time = 1.874
 script = ExtResource( 5 )
 
 [node name="ConveyorSpawnTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 2.02
 autostart = true
 script = ExtResource( 8 )
 
@@ -35,7 +39,7 @@ environment = SubResource( 1 )
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 2 )
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 65540, 0, 1, 65542, 0, 0, 131068, 0, 0, 131078, 0, 0, 196604, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 65540, 1, -1610612735, 65542, 1, 0, 131068, 1, 0, 196604, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 6, 2, 0, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 65540, 2, 1, 65542, 2, 0, 131068, 2, 0, 196604, 2, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 6, 3, 0, 65532, 3, 0, 65533, 3, 0, 65534, 3, 0, 65535, 3, 0, 65540, 3, -1610612735, 65542, 3, 0, 131068, 3, 0, 196604, 3, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 6, 4, 0, 65532, 4, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 65540, 4, -1610612735, 65542, 4, 0, 131068, 4, 0, 196604, 4, 0, 0, 5, 0, 1, 5, 0, 2, 5, 0, 3, 5, 0, 4, 5, 0, 5, 5, 0, 6, 5, 0, 65532, 5, 0, 65533, 5, 0, 65534, 5, 0, 65535, 5, 0, 65536, 5, 0, 65537, 5, 0, 65538, 5, 0, 65539, 5, 0, 65540, 5, -1610612735, 65542, 5, 0, 131068, 5, 0, 131069, 5, 0, 131070, 5, 0, 131071, 5, 0, 196604, 5, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 0, 4, 65532, 0, 5, 65532, 0, 6, 65532, 0, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 65536, 65532, 0, 65537, 65532, 0, 65538, 65532, 0, 65539, 65532, 0, 65540, 65532, -1610612735, 65542, 65532, 0, 131068, 65532, 0, 131069, 65532, 0, 131070, 65532, 0, 131071, 65532, 0, 131072, 65532, 0, 131073, 65532, 0, 131074, 65532, 0, 131075, 65532, 0, 131078, 65532, 0, 196604, 65532, 0, 196605, 65532, 0, 196606, 65532, 0, 196607, 65532, 0, 196608, 65532, 0, 196609, 65532, 0, 196610, 65532, 1073741824, 196611, 65532, 536870912, 196612, 65532, 0, 196613, 65532, 0, 196614, 65532, 0, 262140, 65532, 536870912, 262141, 65532, 0, 262142, 65532, 0, 262143, 65532, 0, 0, 65533, 536870912, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 6, 65533, 0, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 65540, 65533, 1, 65542, 65533, 0, 131068, 65533, 0, 131078, 65533, 0, 196604, 65533, 0, 196614, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 6, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65540, 65534, 1, 65542, 65534, 0, 131068, 65534, 0, 131078, 65534, 0, 196604, 65534, 0, 196614, 65534, 536870912, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 6, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 65540, 65535, -1610612735, 65542, 65535, 0, 131068, 65535, 0, 131078, 65535, 0, 196604, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 65542, 0, 0, 131068, 0, 0, 131078, 0, 0, 196604, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 65542, 1, 0, 131068, 1, 0, 196604, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 6, 2, 0, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 65542, 2, 0, 131068, 2, 0, 196604, 2, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 6, 3, 0, 65532, 3, 0, 65533, 3, 0, 65534, 3, 0, 65535, 3, 0, 65542, 3, 0, 131068, 3, 0, 196604, 3, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 6, 4, 0, 65532, 4, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 1073741824, 65542, 4, 0, 131068, 4, 0, 196604, 4, 0, 0, 5, -536870912, 1, 5, 0, 2, 5, 0, 3, 5, 0, 4, 5, 0, 5, 5, -536870912, 6, 5, 0, 65532, 5, 0, 65533, 5, 0, 65534, 5, -536870912, 65535, 5, -536870912, 65536, 5, 0, 65537, 5, 0, 65538, 5, 0, 65539, 5, 0, 65542, 5, -536870912, 131068, 5, 0, 131069, 5, 0, 131070, 5, 0, 131071, 5, -536870912, 196604, 5, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 0, 4, 65532, 0, 5, 65532, 0, 6, 65532, 0, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 65536, 65532, 0, 65537, 65532, 0, 65538, 65532, 0, 65539, 65532, 0, 65542, 65532, 0, 131068, 65532, 0, 131069, 65532, 0, 131070, 65532, 0, 131071, 65532, 0, 131072, 65532, 0, 131073, 65532, 0, 131074, 65532, 0, 131075, 65532, 0, 131078, 65532, 0, 196604, 65532, 0, 196605, 65532, 0, 196606, 65532, 0, 196607, 65532, 0, 196608, 65532, 0, 196609, 65532, 0, 196610, 65532, 0, 196611, 65532, 0, 196612, 65532, 0, 196613, 65532, 0, 196614, 65532, 0, 262140, 65532, 0, 262141, 65532, 0, 262142, 65532, 0, 262143, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 6, 65533, 0, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 65542, 65533, 0, 131068, 65533, 0, 131078, 65533, 0, 196604, 65533, 0, 196614, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 6, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65542, 65534, 0, 131068, 65534, 0, 131078, 65534, 0, 196604, 65534, 0, 196614, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 6, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 65542, 65535, 0, 131068, 65535, 0, 131078, 65535, 0, 196604, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -49,7 +53,7 @@ transform = Transform( 0.0122689, 0, -0.999925, 0, 1, 0, 0.999925, 0, 0.0122689,
 transform = Transform( 0.0122689, 0, -0.999925, 0, 1, 0, 0.999925, 0, 0.0122689, -3.79841, 2.88165, 6.04193 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.96746, 8.5279, 2.05376 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.509751, 8.5279, 2.05376 )
 omni_range = 14.9
 
 [node name="Camera" type="Camera" parent="."]
@@ -62,11 +66,47 @@ script = ExtResource( 6 )
 
 [node name="ItemContainer" type="Node" parent="."]
 
+[node name="Screw" parent="ItemContainer" instance=ExtResource( 1 )]
+physics_material_override = SubResource( 3 )
+
 [node name="Wrench" parent="ItemContainer" instance=ExtResource( 4 )]
 
 [node name="ConveyorPath" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.385915, -0.474002 )
 curve = SubResource( 2 )
+
+[node name="ConveyorMeshContainer" type="Spatial" parent="ConveyorPath"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10151, -2.18542, -8.4504 )
+
+[node name="foerderband_mid" parent="ConveyorPath/ConveyorMeshContainer" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 1.7959 )
+
+[node name="foerderband_mid2" parent="ConveyorPath/ConveyorMeshContainer" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 3.79503 )
+
+[node name="foerderband_mid3" parent="ConveyorPath/ConveyorMeshContainer" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 5.78821 )
+
+[node name="foerderband_mid4" parent="ConveyorPath/ConveyorMeshContainer" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 7.76364 )
+
+[node name="foerderband_mid5" parent="ConveyorPath/ConveyorMeshContainer" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 9.75434 )
+
+[node name="foerderband_mid6" parent="ConveyorPath/ConveyorMeshContainer" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 11.7165 )
+
+[node name="foerderband_mid7" parent="ConveyorPath/ConveyorMeshContainer" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 13.6883 )
+
+[node name="foerderband_mid8" parent="ConveyorPath/ConveyorMeshContainer" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 15.6424 )
+
+[node name="foerderband_mid9" parent="ConveyorPath/ConveyorMeshContainer" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 17.6224 )
+
+[node name="foerderband_mid10" parent="ConveyorPath/ConveyorMeshContainer" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 19.5805 )
 
 [node name="PathFollow" type="PathFollow" parent="ConveyorPath"]
 
@@ -78,5 +118,33 @@ script = ExtResource( 7 )
 
 [node name="ConveyorSlot" parent="ConveyorPath/PathFollow/ConveyorContainer" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44753, 3.88038, 13.9615 )
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConveyorCount" type="Label" parent="UI"]
+margin_left = 16.6677
+margin_top = 11.1118
+margin_right = 132.668
+margin_bottom = 25.1118
+text = "Conveyor Count: 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemCount" type="Label" parent="UI"]
+margin_left = 18.2551
+margin_top = 33.3354
+margin_right = 106.255
+margin_bottom = 47.3354
+text = "Item Count: 2"
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="ItemSpawnTimer" to="ItemSpawnTimer" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="ConveyorSpawnTimer" to="ConveyorSpawnTimer" method="_on_ConveyorSpawnTimer_timeout"]

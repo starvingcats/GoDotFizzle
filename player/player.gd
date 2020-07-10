@@ -41,9 +41,10 @@ func _input(event):
 		get_tree().reload_current_scene()
 
 	if Input.is_action_just_pressed("test_action"):
-		print("test_action")
-		var ItemSpawner = get_parent().get_node("ItemSpawner")
-		ItemSpawner.spawn_item("TestClub")
+		if name == "Player":
+			print("test_action")
+			var ItemSpawner = get_parent().get_node("ItemSpawner")
+			ItemSpawner.spawn_item("Screw")
 
 	if Input.is_action_just_pressed(player_prefix + "pick_up"):
 		if pickitem != null and carried_object == null:

@@ -1,14 +1,12 @@
 extends RigidBody
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var picked_up
 var holder = null
 var pickable = false
 var orig_scale
+
+func _ready():
+	orig_scale = self.scale
 
 func pick_up(picker):
 	# holder = picker
@@ -47,17 +45,7 @@ func leave():
 	holder = null
 	self.scale = orig_scale
 
-
-
 func throw(power):
 	leave()
 	apply_impulse(Vector3(), holder.look_vector * Vector3(power, power, power))
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	orig_scale = self.scale
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

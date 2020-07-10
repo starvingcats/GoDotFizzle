@@ -18,4 +18,4 @@ func _ready():
 
 func _on_SpawnTimer_timeout():
 	var ItemSpawner = get_parent().get_node("ItemSpawner")
-	ItemSpawner.spawn_item("TestClub")
+	ItemSpawner.spawn_item("Screw")

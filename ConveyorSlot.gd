@@ -1,6 +1,6 @@
 extends KinematicBody
 
-var move_speed = 5
+var move_speed = 1.5
 var patrol_path
 var patrol_points
 var patrol_index = 0
@@ -20,7 +20,6 @@ func run_path():
 		return
 	var target = patrol_points[patrol_index]
 	var position = transform.origin
-	# if position.distance_to(target) < 1:
 	if position.distance_to(target) < 1 and patrol_index == patrol_points.size() - 1:
 		die()
 	if position.distance_to(target) < 1:
