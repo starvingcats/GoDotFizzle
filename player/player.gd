@@ -17,7 +17,7 @@ var air_idle_deaccel = false
 var accel = 19.0
 var deaccel = 14.0
 var sharp_turn_threshold = 140
-var max_speed = 3.1
+var max_speed = 5
 
 var prev_shoot = false
 var shoot_blend = 0
@@ -72,7 +72,7 @@ func _physics_process(delta):
 	var cam_basis = self.get_global_transform().basis
 
 	dir = (Input.get_action_strength("move_left") - Input.get_action_strength("move_right")) * cam_basis[2]
-	dir += (Input.get_action_strength("move_backwards") - Input.get_action_strength("move_forward")) * cam_basis[0]
+	dir += (Input.get_action_strength("move_backwards") - Input.get_action_strength("move_forward")) * cam_basis[0] 
 
 	dir.y = 0.0
 	dir = dir.normalized()
@@ -105,7 +105,6 @@ func _physics_process(delta):
 		if hspeed > 0:
 			facing_mesh = adjust_facing(facing_mesh, dir, delta, 1.0 / hspeed * TURN_SPEED, Vector3.UP)
 		var m3 = Basis(-facing_mesh, Vector3.UP, -facing_mesh.cross(Vector3.UP).normalized()).scaled(CHAR_SCALE)
-		
 		get_node("Armature").set_transform(Transform(m3, mesh_xform.origin))
 		
 		if not jumping and jump_attempt:

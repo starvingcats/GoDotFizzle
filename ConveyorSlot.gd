@@ -8,9 +8,7 @@ var carried_object = null
 
 func _ready():
 	patrol_path = get_tree().current_scene.get_node("ConveyorPath")
-	print(patrol_path)
-	if patrol_path:
-		patrol_points = patrol_path.curve.get_baked_points()
+	patrol_points = patrol_path.curve.get_baked_points()
 
 func die():
 	if carried_object != null and carried_object.has_method("leave"):
