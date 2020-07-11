@@ -28,6 +28,8 @@ var pickitem = null
 var transfer_slot = null
 var player_prefix = ''
 
+var press_button = null
+
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
 func _ready():
@@ -43,12 +45,14 @@ func _input(event):
 	if Input.is_action_just_pressed("test_action"):
 		if name == "Player":
 			print("test_action")
-			var ItemSpawner = get_parent().get_node("ItemSpawner")
-			ItemSpawner.spawn_item("Woodplank")
+			#var ItemSpawner = get_parent().get_node("ItemSpawner")
+			#ItemSpawner.spawn_item("Woodplank")
 
 	if Input.is_action_just_pressed(player_prefix + "craft"):
 		if transfer_slot != null and transfer_slot.can_craft == true:
 			transfer_slot.craft()
+		elif press_button != null:
+			press_button.execute()
 
 	if Input.is_action_just_pressed(player_prefix + "pick_up"):
 		if pickitem != null and carried_object == null:
@@ -196,24 +200,20 @@ func _on_PickupArea_body_entered(body):
 	if body.has_method("pick_up"):
 		body.pickable = true
 		pickitem = body
-		print("ja!")
-		print(body)
-		print(pickitem)
 	elif body.has_method("add_object"):
 		transfer_slot = body
-		print("transfer in")
-
+	elif "knopf" in body.name:
+		press_button = body
 
 func _on_PickupArea_body_exited(body):
 	if body.has_method("pick_up"):
 		body.pickable = false
 		if body == pickitem:
 			pickitem = null
-		print("nein!")
-		print(body)
-		print(pickitem)
 	elif body.has_method("add_object"):
 		transfer_slot = null
 		print("transfer out")
 		if body.crafting == true:
 			body.abort_craft()
+	elif "knopf" in body.name:
+		press_button = null
