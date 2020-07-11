@@ -19,6 +19,8 @@ var recipe_done = false
 var can_craft = false
 var crafting = false
 
+var crafting_player = null
+
 func add_object(object):
 	carried_objects.append(object)
 	print(carried_objects)
@@ -31,9 +33,11 @@ func add_object(object):
 		can_craft = true
 		print("YAY can craft")
 
-func craft():
+func craft(player):
+	crafting_player = player
 	if crafting == false and recipe_done == false:
 		print("Crafting...")
+		crafting_player.get_node("CraftIndicator").visible = true
 		crafting = true
 		get_node("RecipeTimer").start()
 
@@ -42,6 +46,8 @@ func abort_craft():
 		print("Aborting crafting...")
 		crafting = false
 		get_node("RecipeTimer").stop()
+		crafting_player.get_node("CraftIndicator").visible = false
+		crafting_player = null
 
 func _ready():
 	patrol_path = get_parent().get_parent()
@@ -102,5 +108,7 @@ func _on_RecipeTimer_timeout():
 	ItemContainer.add_child(item_node)
 	item_node.set_translation(ItemSpawner.translation)
 	item_node.pick_up(self)
+	crafting_player.get_node("CraftIndicator").visible = false
+	crafting_player = null
 	# add_object(item_node)
 

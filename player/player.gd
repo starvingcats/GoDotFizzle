@@ -50,7 +50,7 @@ func _input(event):
 
 	if Input.is_action_just_pressed(player_prefix + "craft"):
 		if transfer_slot != null and transfer_slot.can_craft == true:
-			transfer_slot.craft()
+			transfer_slot.craft(self)
 		elif press_button != null:
 			press_button.execute()
 
