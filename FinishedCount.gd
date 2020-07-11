@@ -1,4 +1,4 @@
-extends Timer
+extends Label
 
 
 # Declare member variables here. Examples:
@@ -15,7 +15,5 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
-func _on_ConveyorSpawnTimer_timeout():
-	var ItemSpawner = get_parent().get_node("ConveyorPath/ConveyorSpawner")
-	ItemSpawner.spawn_item("ConveyorSlot")
+func _process(delta):
+	text = "Finished Count: " + str(get_tree().current_scene.finished_count)

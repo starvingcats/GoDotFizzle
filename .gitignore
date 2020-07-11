@@ -8,7 +8,11 @@ bin/
 *.dll
 *.gdns
 *.gdnlib
+android/
 
 # Mono-specific ignores
 .mono/
 data_*/
+
+# lb specific
+.Exports/

@@ -44,7 +44,11 @@ func _input(event):
 		if name == "Player":
 			print("test_action")
 			var ItemSpawner = get_parent().get_node("ItemSpawner")
-			ItemSpawner.spawn_item("Screw")
+			ItemSpawner.spawn_item("Woodplank")
+
+	if Input.is_action_just_pressed(player_prefix + "craft"):
+		if transfer_slot != null and transfer_slot.can_craft == true:
+			transfer_slot.craft()
 
 	if Input.is_action_just_pressed(player_prefix + "pick_up"):
 		if pickitem != null and carried_object == null:
@@ -195,7 +199,7 @@ func _on_PickupArea_body_entered(body):
 		print("ja!")
 		print(body)
 		print(pickitem)
-	elif body.has_method("transfer"):
+	elif body.has_method("add_object"):
 		transfer_slot = body
 		print("transfer in")
 
@@ -208,6 +212,8 @@ func _on_PickupArea_body_exited(body):
 		print("nein!")
 		print(body)
 		print(pickitem)
-	elif body.has_method("transfer"):
+	elif body.has_method("add_object"):
 		transfer_slot = null
 		print("transfer out")
+		if body.crafting == true:
+			body.abort_craft()

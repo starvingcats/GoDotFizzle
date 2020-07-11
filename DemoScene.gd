@@ -1,5 +1,6 @@
-extends Timer
+extends Spatial
 
+var finished_count = 0
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -14,8 +15,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _on_ConveyorSpawnTimer_timeout():
-	var ItemSpawner = get_parent().get_node("ConveyorPath/ConveyorSpawner")
-	ItemSpawner.spawn_item("ConveyorSlot")
