@@ -26,7 +26,7 @@ shape = SubResource( 2 )
 [node name="HoldingPosition" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.435839, 0 )
 
-[node name="RecipeTimer" type="Timer" parent="."]
+[node name="CraftingTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-[connection signal="timeout" from="RecipeTimer" to="." method="_on_RecipeTimer_timeout"]
+[connection signal="timeout" from="CraftingTimer" to="." method="_on_RecipeTimer_timeout"]

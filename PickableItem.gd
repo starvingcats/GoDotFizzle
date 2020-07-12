@@ -38,15 +38,17 @@ func _process(delta):
 
 func carry():
 	$CollisionShape.set_disabled(true)
-	holder.carried_object = self
 	if holder.has_method("add_object"):
 		holder.add_object(self)
+	else:
+		holder.carried_object = self
 	self.set_mode(1)
 	picked_up = true
 
 func leave():
 	$CollisionShape.set_disabled(false)
-	holder.carried_object = null
+	if !holder.has_method("add_object"):
+		holder.carried_object = null
 	self.set_mode(0)
 	picked_up = false
 	holder = null
