@@ -29,6 +29,7 @@ var transfer_slot = null
 var player_prefix = ''
 
 var press_button = null
+var press_dispenser = null
 
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
@@ -53,6 +54,8 @@ func _input(event):
 			transfer_slot.craft(self)
 		elif press_button != null:
 			press_button.execute()
+		elif press_dispenser != null:
+			press_dispenser.execute()
 
 	if Input.is_action_just_pressed(player_prefix + "pick_up"):
 		if pickitem != null and carried_object == null:
@@ -204,6 +207,8 @@ func _on_PickupArea_body_entered(body):
 		transfer_slot = body
 	elif "knopf" in body.name:
 		press_button = body
+	elif "ScrewDispenser" in body.name:
+		press_dispenser = body
 
 func _on_PickupArea_body_exited(body):
 	if body.has_method("pick_up"):
@@ -217,3 +222,5 @@ func _on_PickupArea_body_exited(body):
 			body.abort_craft()
 	elif "knopf" in body.name:
 		press_button = null
+	elif "ScrewDispenser" in body.name:
+		press_dispenser = null
