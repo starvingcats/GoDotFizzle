@@ -39,15 +39,18 @@ func abort_craft():
 		crafting_player = null
 
 func _on_CraftingTimer_timeout():
+	print("Crafting done")
+	print(carried_objects)
 	crafting = false
 	for item in carried_objects:
 		item.queue_free()
 	carried_objects = []
 
-	var ItemContainer = get_node("HoldingPosition")
-	var ItemSpawner = ItemContainer
+	var ItemContainer = get_tree().current_scene.get_node("ItemContainer")
+	var ItemSpawner = get_node("HoldingPosition")
 	ItemContainer.add_child(recipe_item_node)
 	recipe_item_node.set_translation(ItemSpawner.translation)
 	recipe_item_node.pick_up(self)
 	crafting_player.get_node("CraftIndicator").visible = false
 	crafting_player = null
+	creat_recipe_node()

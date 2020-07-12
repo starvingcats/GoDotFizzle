@@ -19,6 +19,7 @@ func _ready():
 func die():
 	for item in carried_objects:
 		print(item)
+		assert(item != null)
 		item.leave()
 		if "WoodChest" in item.name:
 			get_tree().current_scene.finished_count += 1
