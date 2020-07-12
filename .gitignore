@@ -16,3 +16,4 @@ data_*/
 
 # lb specific
 .Exports/
+DemoScene.tscn

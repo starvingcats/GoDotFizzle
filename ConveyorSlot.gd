@@ -100,7 +100,7 @@ func _on_RecipeTimer_timeout():
 	for item in carried_objects:
 		item.queue_free()
 	carried_objects = []
-	var itemname = "kisteFBX"
+	var itemname = "WoodChest"
 	var scene = load("res://" + itemname + ".tscn")
 	var item_node = scene.instance()
 	var ItemContainer = get_node("HoldingPosition")

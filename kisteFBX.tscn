@@ -1,8 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://kisteFBX.fbx" type="PackedScene" id=1]
 [ext_resource path="res://PickableItem_Spatial.gd" type="Script" id=2]
+[ext_resource path="res://wood_test.tres" type="Material" id=3]
 
 [node name="kisteFBX" instance=ExtResource( 1 )]
 transform = Transform( 1.00033, 0, 0, 0, 1.00033, 0, 0, 0, 1.00033, 0.00022929, 3.20841e-07, 0.00132108 )
 script = ExtResource( 2 )
+
+[node name="top2" parent="." index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="mitte3" parent="." index="1"]
+material/0 = ExtResource( 3 )
+
+[node name="mitte4" parent="." index="2"]
+material/0 = ExtResource( 3 )
+
+[node name="bot2" parent="." index="3"]
+material/0 = ExtResource( 3 )
+
+[node name="links2" parent="." index="4"]
+material/0 = ExtResource( 3 )
+
+[node name="rechts2" parent="." index="5"]
+material/0 = ExtResource( 3 )
