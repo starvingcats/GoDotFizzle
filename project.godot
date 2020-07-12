@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "CraftingSpot",
+"class": "ConveyorSlot",
+"language": "GDScript",
+"path": "res://ConveyorSlot.gd"
+}, {
+"base": "Spatial",
+"class": "CraftingSpot",
+"language": "GDScript",
+"path": "res://CraftingSpot.gd"
+}, {
 "base": "RigidBody",
 "class": "PickableItem",
 "language": "GDScript",
@@ -20,6 +30,8 @@ _global_script_classes=[ {
 "path": "res://RecipeItem.gd"
 } ]
 _global_script_class_icons={
+"ConveyorSlot": "",
+"CraftingSpot": "",
 "PickableItem": "",
 "RecipeItem": ""
 }
@@ -114,6 +126,11 @@ p2_pick_up={
 p2_jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+p2_craft={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
 

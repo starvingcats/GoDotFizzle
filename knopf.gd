@@ -12,7 +12,7 @@ func execute():
 		pressable = false
 		get_node("Timer").start()
 		print("Pressed!")
-		get_parent().get_node("ItemSpawner").spawn_item("Woodplank")
+		get_parent().get_node("ItemSpawner").spawn_item("WoodBlock")
 
 
 # Called when the node enters the scene tree for the first time.

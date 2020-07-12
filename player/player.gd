@@ -68,6 +68,12 @@ func _input(event):
 		elif carried_object != null and transfer_slot != null:
 			carried_object.pick_up(transfer_slot)
 			carried_object = null
+		elif carried_object == null and transfer_slot != null:
+			var pick_item = transfer_slot.carried_objects.pop_front()
+			if pick_item:
+				pick_item.leave()
+				pick_item.pick_up(self)
+
 
 func _physics_process(delta):
 	linear_velocity += gravity * delta
