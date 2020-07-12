@@ -1,19 +1,21 @@
 extends KinematicBody
 
+export(PackedScene) var recipe_scene
+
+var recipe_item_node = null
+
 var move_speed = 5
+var move_treshold = 5
+var move_time = 0.4
+
 var patrol_path
 var patrol_points
 var patrol_index = 0
 var carried_object = null
 var carried_objects = []
 
-var move_treshold = 5
-var move_time = 0.4
 var cur_move = 0
 
-var recipe = ''
-
-var recipe_count = 2
 var recipe_done = false
 
 var can_craft = false
@@ -21,17 +23,16 @@ var crafting = false
 
 var crafting_player = null
 
+func _ready():
+	patrol_path = get_parent().get_parent()
+	patrol_points = patrol_path.curve.get_baked_points()
+
+	recipe_item_node = recipe_scene.instance()
+	$RecipeTimer.wait_time = recipe_item_node.recipe_time
+
 func add_object(object):
 	carried_objects.append(object)
-	print(carried_objects)
-	print(object.name)
-	var woodplank_count = 0
-	for item in carried_objects:
-		if "Woodplank" in item.name:
-			woodplank_count += 1
-	if woodplank_count == recipe_count:
-		can_craft = true
-		print("YAY can craft")
+	can_craft = recipe_item_node.check_objects(carried_objects)
 
 func craft(player):
 	crafting_player = player
@@ -39,28 +40,21 @@ func craft(player):
 		print("Crafting...")
 		crafting_player.get_node("CraftIndicator").visible = true
 		crafting = true
-		get_node("RecipeTimer").start()
+		$RecipeTimer.start()
 
 func abort_craft():
 	if crafting == true:
 		print("Aborting crafting...")
 		crafting = false
-		get_node("RecipeTimer").stop()
+		$RecipeTimer.stop()
 		crafting_player.get_node("CraftIndicator").visible = false
 		crafting_player = null
 
-func _ready():
-	patrol_path = get_parent().get_parent()
-	patrol_points = patrol_path.curve.get_baked_points()
-
 func die():
-	#if carried_object != null and carried_object.has_method("leave"):
-	#		carried_object.leave()
-	print(carried_objects)
 	for item in carried_objects:
 		print(item)
 		item.leave()
-		if "kiste" in item.name:
+		if "WoodChest" in item.name:
 			get_tree().current_scene.finished_count += 1
 			print("FISNISHED!")
 	queue_free()
@@ -89,9 +83,6 @@ func transfer(item):
 
 func _physics_process(delta):
 	run_path(delta)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func _on_RecipeTimer_timeout():
 	print("recipe done!")
@@ -100,14 +91,12 @@ func _on_RecipeTimer_timeout():
 	for item in carried_objects:
 		item.queue_free()
 	carried_objects = []
-	var itemname = "WoodChest"
-	var scene = load("res://" + itemname + ".tscn")
-	var item_node = scene.instance()
+
 	var ItemContainer = get_node("HoldingPosition")
 	var ItemSpawner = ItemContainer
-	ItemContainer.add_child(item_node)
-	item_node.set_translation(ItemSpawner.translation)
-	item_node.pick_up(self)
+	ItemContainer.add_child(recipe_item_node)
+	recipe_item_node.set_translation(ItemSpawner.translation)
+	recipe_item_node.pick_up(self)
 	crafting_player.get_node("CraftIndicator").visible = false
 	crafting_player = null
 	# add_object(item_node)

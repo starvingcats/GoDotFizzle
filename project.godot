@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "RigidBody",
+"class": "PickableItem",
+"language": "GDScript",
+"path": "res://PickableItem.gd"
+}, {
+"base": "PickableItem",
+"class": "RecipeItem",
+"language": "GDScript",
+"path": "res://RecipeItem.gd"
+} ]
 _global_script_class_icons={
-
+"PickableItem": "",
+"RecipeItem": ""
 }
 
 [application]

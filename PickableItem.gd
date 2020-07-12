@@ -1,3 +1,5 @@
+class_name PickableItem
+
 extends RigidBody
 
 var picked_up
@@ -29,6 +31,7 @@ func _process(delta):
 			set_global_transform(holder.get_node("HoldingPosition").get_global_transform())
 			var index = holder.carried_objects.find(self)
 			translate_object_local(Vector3.UP * index * 0.2)
+
 	if global_transform.origin.y < 1:
 		print("Clear item")
 		queue_free()
