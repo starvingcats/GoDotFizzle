@@ -76,6 +76,10 @@ func _input(event):
 
 
 func _physics_process(delta):
+	
+	if transfer_slot != null and transfer_slot.blocked:
+		transfer_slot = null
+	
 	linear_velocity += gravity * delta
 	
 	var anim = ANIM_FLOOR
@@ -209,7 +213,7 @@ func _on_PickupArea_body_entered(body):
 	if body.has_method("pick_up"):
 		body.pickable = true
 		pickitem = body
-	elif body.has_method("add_object"):
+	elif body.has_method("add_object") and !body.blocked:
 		transfer_slot = body
 	elif "knopf" in body.name:
 		press_button = body
@@ -221,7 +225,7 @@ func _on_PickupArea_body_exited(body):
 		body.pickable = false
 		if body == pickitem:
 			pickitem = null
-	elif body.has_method("add_object"):
+	elif body.has_method("add_object") and !body.blocked:
 		transfer_slot = null
 		print("transfer out")
 		if body.crafting == true:

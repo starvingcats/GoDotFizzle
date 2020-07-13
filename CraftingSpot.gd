@@ -9,6 +9,7 @@ var crafting = false
 var crafting_player = null
 var recipe_item_node = null
 var carried_objects = []
+var blocked = false
 
 
 func _ready():

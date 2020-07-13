@@ -24,21 +24,21 @@ func _ready():
 func die():
 	for item in carried_objects:
 		assert(item != null)
-		check_score(item)
+		has_scored = check_score(item)
 		item.leave()
-
-	if !has_scored:
-		base_scene.sub_multiplier()
+		if has_scored:
+			base_scene.finished_count += 1
+			base_scene.calc_score(item.basic_score)
+			base_scene.add_multiplier()
+		else:
+			base_scene.sub_multiplier()
 
 	queue_free()
 
 func check_score(item):
 	if item.has_method("check_objects") and item.scored_recipe:
-		base_scene.finished_count += 1
-		base_scene.calc_score(item.basic_score)
-		base_scene.add_multiplier()
-		has_scored = true
-		print("FISNISHED!")
+		return true
+	return false
 
 func run_path(delta):
 	if !patrol_path:
@@ -66,5 +66,6 @@ func _physics_process(delta):
 
 func _on_RecipeTimer_timeout():
 	_on_CraftingTimer_timeout()
+	blocked = true
 
 
