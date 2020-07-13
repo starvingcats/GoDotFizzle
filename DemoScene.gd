@@ -6,6 +6,7 @@ var finished_count = 0
 var players_init = false
 var total_score = 0.0
 var cur_multiplier = 1.0
+var game_over = false
 
 func add_multiplier(add=0.5):
 	cur_multiplier += add
@@ -24,3 +25,10 @@ func player_selection():
 
 func _ready():
 	player_selection()
+
+func _on_LevelTimer_timeout():
+	game_over = true
+	var score_label = get_tree().current_scene.get_node("UI/GameOverNote/GridContainer/ScoreLabel")
+	score_label.text = "Your Score: " + str(total_score)
+	get_tree().current_scene.get_node("UI/GameOverNote").popup_centered()
+	get_tree().paused = true

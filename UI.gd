@@ -31,6 +31,9 @@ func _input(event):
 				get_tree().paused = false
 	else:
 
+		if get_tree().current_scene.game_over:
+			return
+
 		for prefix in player_prefixes:
 
 			if Input.is_action_just_pressed(prefix + "pause_menu"):
