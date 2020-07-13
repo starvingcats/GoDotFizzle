@@ -12,6 +12,8 @@ extents = Vector3( 0.521067, 0.548651, 0.512235 )
 script = ExtResource( 1 )
 recipe_scenes = [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 4 ) ]
 recipe_time = 2
+scored_recipe = 1
+basic_score = 50
 
 [node name="kisteFBX" parent="." instance=ExtResource( 2 )]
 

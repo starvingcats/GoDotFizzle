@@ -12,8 +12,6 @@ func spawn_item(itemname):
 	var ItemSpawner = self
 	ItemContainer.add_child(item_node)
 	item_node.set_translation(ItemSpawner.translation)
-	var label = get_tree().current_scene.get_node("UI/ConveyorCount")
-	label.text = "Conveyor Count: " + str(get_tree().current_scene.get_node("ConveyorPath/ConveyorContainer").get_child_count())
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

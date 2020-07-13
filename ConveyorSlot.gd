@@ -12,19 +12,33 @@ var patrol_index = 0
 
 var cur_move = 0
 
+var has_scored = false
+var base_scene
+
+
 func _ready():
 	patrol_path = get_parent().get_parent()
 	patrol_points = patrol_path.curve.get_baked_points()
+	base_scene = get_tree().current_scene
 
 func die():
 	for item in carried_objects:
-		print(item)
 		assert(item != null)
+		check_score(item)
 		item.leave()
-		if "WoodChest" in item.name:
-			get_tree().current_scene.finished_count += 1
-			print("FISNISHED!")
+
+	if !has_scored:
+		base_scene.sub_multiplier()
+
 	queue_free()
+
+func check_score(item):
+	if item.has_method("check_objects") and item.scored_recipe:
+		base_scene.finished_count += 1
+		base_scene.calc_score(item.basic_score)
+		base_scene.add_multiplier()
+		has_scored = true
+		print("FISNISHED!")
 
 func run_path(delta):
 	if !patrol_path:

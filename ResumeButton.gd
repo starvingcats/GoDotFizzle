@@ -3,7 +3,7 @@ extends Button
 
 func _on_Resume_pressed():
 	print("Haha lost.")
-	get_tree().current_scene.get_node("UI/Popup").hide()
+	get_tree().current_scene.get_node("UI/PausePopup").hide()
 	get_tree().paused = false
 
 

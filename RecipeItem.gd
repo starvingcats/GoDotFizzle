@@ -3,8 +3,10 @@ class_name RecipeItem
 extends PickableItem
 
 export(Array, PackedScene) var recipe_scenes
-
 export(int) var recipe_time
+
+export(int, "No", "Yes") var scored_recipe
+export(int) var basic_score
 
 func check_objects(objects):
 

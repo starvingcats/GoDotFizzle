@@ -39,8 +39,8 @@ func _input(event):
 					create_player(prefix)
 				else:
 					if !get_tree().paused:
-						get_tree().current_scene.get_node("UI/Popup").popup_centered()
+						get_tree().current_scene.get_node("UI/PausePopup").popup_centered()
 						get_tree().paused = true
 					else:
-						get_tree().current_scene.get_node("UI/Popup").hide()
+						get_tree().current_scene.get_node("UI/PausePopup").hide()
 						get_tree().paused = false

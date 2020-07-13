@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ResumeButton.gd" type="Script" id=1]
 
-[node name="PopupPanel" type="PopupPanel"]
+[node name="PausePopup" type="PopupPanel"]
 margin_right = 297.0
 margin_bottom = 287.0
 __meta__ = {
