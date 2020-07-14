@@ -2,19 +2,15 @@ class_name ConveyorSlot
 
 extends CraftingSpot
 
-var move_speed = 5
-var move_treshold = 5
-var move_time = 0.4
+var move_speed = 8
+var move_allowed = false
 
 var patrol_path
 var patrol_points
 var patrol_index = 0
 
-var cur_move = 0
-
 var has_scored = false
 var base_scene
-
 
 func _ready():
 	patrol_path = get_parent().get_parent()
@@ -30,8 +26,9 @@ func die():
 			base_scene.finished_count += 1
 			base_scene.calc_score(item.basic_score)
 			base_scene.add_multiplier()
-		else:
-			base_scene.sub_multiplier()
+
+	if !has_scored:
+		base_scene.sub_multiplier()
 
 	queue_free()
 
@@ -43,12 +40,10 @@ func check_score(item):
 func run_path(delta):
 	if !patrol_path:
 		return
-	cur_move += delta
-	if cur_move < move_treshold:
+
+	if !move_allowed:
 		return
-	if cur_move > move_treshold + move_time:
-		cur_move = 0
-		return
+
 	var target = patrol_points[patrol_index]
 	var position = transform.origin
 	if position.distance_to(target) < 1 and patrol_index == patrol_points.size() - 1:

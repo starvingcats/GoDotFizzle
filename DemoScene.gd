@@ -12,6 +12,7 @@ func add_multiplier(add=0.5):
 	cur_multiplier += add
 
 func sub_multiplier(sub=0.2):
+	print("sub called!")
 	cur_multiplier -= sub
 	if cur_multiplier < 1.0:
 		cur_multiplier = 1.0

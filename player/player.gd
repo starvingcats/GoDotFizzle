@@ -6,7 +6,7 @@ const ANIM_AIR = 1
 const SHOOT_TIME = 1.5
 const SHOOT_SCALE = 2
 const CHAR_SCALE = Vector3(0.3, 0.3, 0.3)
-const TURN_SPEED = 20
+const TURN_SPEED = 30
 
 var movement_dir = Vector3()
 var linear_velocity = Vector3()
@@ -14,9 +14,9 @@ var linear_velocity = Vector3()
 var jumping = false
 
 var air_idle_deaccel = false
-var accel = 19.0
+var accel = 5.0
 var deaccel = 14.0
-var sharp_turn_threshold = 70
+var sharp_turn_threshold = 140
 var max_speed = 5
 var throw_power = 6
 
@@ -36,8 +36,6 @@ onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") 
 
 func _ready():
 	get_node("AnimationTree").set_active(true)
-	if name == "Player2":
-		player_prefix = 'p2_'
 
 func _input(event):
 
@@ -70,6 +68,9 @@ func _input(event):
 			carried_object.pick_up(transfer_slot)
 			carried_object = null
 		elif carried_object == null and transfer_slot != null:
+
+			if transfer_slot.crafting:
+				return
 			var pick_item = transfer_slot.carried_objects.pop_front()
 			if pick_item:
 				pick_item.leave()
@@ -131,7 +132,6 @@ func _physics_process(delta):
 			facing_mesh = adjust_facing(facing_mesh, dir, delta, 1.0 / hspeed * TURN_SPEED, Vector3.UP)
 		var m3 = Basis(-facing_mesh, Vector3.UP, -facing_mesh.cross(Vector3.UP).normalized()).scaled(CHAR_SCALE)
 		get_node("Armature").set_transform(Transform(m3, mesh_xform.origin))
-		#get_node("Armature").set_transform(Transform(dir, mesh_xform.origin))
 		
 		if not jumping and jump_attempt:
 			vv = 7.0
@@ -184,6 +184,15 @@ func _physics_process(delta):
 	$AnimationTree["parameters/air_dir/blend_amount"] = clamp(-linear_velocity.y / 4 + 0.5, 0, 1)
 	$AnimationTree["parameters/gun/blend_amount"] = min(shoot_blend, 1.0)
 
+	check_pickup_area()
+
+func check_pickup_area():
+	var items = $Armature/Skeleton/PickupArea.get_overlapping_bodies()
+	pickitem = null
+	for p_body in items:
+		if p_body.has_method("pick_up"):
+			pickitem = p_body
+
 
 func adjust_facing(p_facing, p_target, p_step, p_adjust_rate, current_gn):
 	var n = p_target # Normal.
@@ -216,10 +225,7 @@ func throw_item():
 
 
 func _on_PickupArea_body_entered(body):
-	if body.has_method("pick_up"):
-		body.pickable = true
-		pickitem = body
-	elif body.has_method("add_object") and !body.blocked:
+	if body.has_method("add_object") and !body.blocked:
 		transfer_slot = body
 	elif "knopf" in body.name:
 		press_button = body
@@ -227,11 +233,8 @@ func _on_PickupArea_body_entered(body):
 		press_dispenser = body
 
 func _on_PickupArea_body_exited(body):
-	if body.has_method("pick_up"):
-		body.pickable = false
-		if body == pickitem:
-			pickitem = null
-	elif body.has_method("add_object") and !body.blocked:
+
+	if body.has_method("add_object") and !body.blocked:
 		transfer_slot = null
 		print("transfer out")
 		if body.crafting == true:

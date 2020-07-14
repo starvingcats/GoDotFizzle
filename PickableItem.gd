@@ -4,7 +4,6 @@ extends RigidBody
 
 var picked_up
 var holder = null
-var pickable = false
 var orig_scale
 
 func _ready():

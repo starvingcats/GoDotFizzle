@@ -21,3 +21,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_MoveTimer_timeout():
+	for conv in get_parent().get_node("ConveyorContainer").get_children():
+		conv.move_allowed = false

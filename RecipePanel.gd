@@ -6,7 +6,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var label_container = get_node("GridContainer")
+	var label_container = get_node("ScrollContainer/GridContainer")
 	for item in label_container.get_children():
 		item.queue_free()
 	
@@ -21,6 +21,12 @@ func _process(delta):
 		else:
 			msg = recipe_name + ':'
 			for item in conveyor.recipe_item_node.recipe_scenes:
-				msg += '\n --> ' + item.get_state().get_node_name(0)
+				var inst = item.instance()
+				msg += '\n --> ' + inst.name
+				if inst.has_method("check_objects"):
+					for sub_scene in inst.recipe_scenes:
+						msg += '\n ----> ' + sub_scene.get_state().get_node_name(0)
+				inst.queue_free()
+
 		new_label.text = msg
 		label_container.add_child(new_label)
