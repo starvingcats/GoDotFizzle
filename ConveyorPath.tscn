@@ -10,7 +10,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 1, 1, 9.88943 )
+extents = Vector3( 1, 1, 11.2424 )
 
 [node name="ConveyorPath" type="Path"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.385915, -0.474002 )
@@ -25,7 +25,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10151, -2.18542, -8.4504 )
 mode = 1
 
 [node name="CollisionShape" type="CollisionShape" parent="ConveyorMeshContainer"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.55614, 10.7083 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.55614, 11.6168 )
 shape = SubResource( 2 )
 
 [node name="foerderband_mid" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
@@ -57,6 +57,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 17.6224 )
 
 [node name="foerderband_mid10" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 19.5805 )
+
+[node name="foerderband_mid11" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 21.5367 )
 
 [node name="ConveyorSpawner" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.58561, 3.73385, 14.2427 )

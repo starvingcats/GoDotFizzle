@@ -1,0 +1,31 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[ext_resource path="res://materials/concrete_hd/concrete_tex.png" type="Texture" id=1]
+[ext_resource path="res://materials/concrete_hd/concrete.png" type="Texture" id=2]
+[ext_resource path="res://materials/concrete_hd/concrete_height.png" type="Texture" id=3]
+[ext_resource path="res://materials/concrete_hd/concrete_spec.png" type="Texture" id=4]
+
+[resource]
+resource_name = "concrete"
+albedo_color = Color( 0.78125, 0.78125, 0.78125, 1 )
+albedo_texture = ExtResource( 1 )
+metallic = 0.2
+metallic_texture = ExtResource( 4 )
+metallic_texture_channel = 4
+roughness = 0.7
+roughness_texture = ExtResource( 3 )
+normal_enabled = true
+normal_scale = 1.1
+normal_texture = ExtResource( 2 )
+depth_enabled = true
+depth_scale = 0.01
+depth_deep_parallax = true
+depth_min_layers = 8
+depth_max_layers = 32
+depth_flip_tangent = false
+depth_flip_binormal = false
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.1
+uv1_scale = Vector3( 0.25, 0.25, 0.25 )
+uv1_triplanar = true
+uv1_triplanar_sharpness = 2.07053
