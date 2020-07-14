@@ -11,14 +11,13 @@ func _ready():
 	orig_scale = self.scale
 
 func pick_up(picker):
-	# holder = picker
 	if picker == holder or holder == null:
 		holder = picker
 		if picked_up:
 			leave()
 		else:
 			carry()
-	elif picker != holder and holder != null:
+	elif picker != holder and holder != null:  # pick item from other holder
 		leave()
 		holder = picker
 		carry()
@@ -46,15 +45,19 @@ func carry():
 	picked_up = true
 
 func leave():
+	picked_up = false
+	self.scale = orig_scale
 	$CollisionShape.set_disabled(false)
+	self.set_mode(0)
+
+	if !holder:
+		return
+
 	if !holder.has_method("add_object"):
 		holder.carried_object = null
-	self.set_mode(0)
-	picked_up = false
 	holder = null
-	self.scale = orig_scale
 
 func throw(power):
 	leave()
-	apply_impulse(Vector3(), holder.look_vector * Vector3(power, power, power))
-
+	var zdir = get_global_transform().basis[2]  # z-axis is current player front
+	apply_central_impulse(zdir * power + Vector3.UP * power)

@@ -6,7 +6,7 @@ const ANIM_AIR = 1
 const SHOOT_TIME = 1.5
 const SHOOT_SCALE = 2
 const CHAR_SCALE = Vector3(0.3, 0.3, 0.3)
-const TURN_SPEED = 40
+const TURN_SPEED = 20
 
 var movement_dir = Vector3()
 var linear_velocity = Vector3()
@@ -16,8 +16,9 @@ var jumping = false
 var air_idle_deaccel = false
 var accel = 19.0
 var deaccel = 14.0
-var sharp_turn_threshold = 140
+var sharp_turn_threshold = 70
 var max_speed = 5
+var throw_power = 6
 
 var prev_shoot = false
 var shoot_blend = 0
@@ -44,10 +45,10 @@ func _input(event):
 		get_tree().reload_current_scene()
 
 	if Input.is_action_just_pressed("test_action"):
-		if name == "Player":
-			print("test_action")
-			#var ItemSpawner = get_parent().get_node("ItemSpawner")
-			#ItemSpawner.spawn_item("Woodplank")
+		print("test_action")
+
+	if Input.is_action_just_pressed(player_prefix + "throw"):
+		throw_item()
 
 	if Input.is_action_just_pressed(player_prefix + "craft"):
 		if transfer_slot != null and transfer_slot.can_craft == true:
@@ -94,7 +95,7 @@ func _physics_process(delta):
 	var dir = Vector3() # Where does the player intend to walk to.
 
 	# cam_basis is now the root node of player!
-	var cam_basis = self.get_global_transform().basis
+	var cam_basis = get_global_transform().basis
 
 	dir = (Input.get_action_strength(player_prefix + "move_left") - Input.get_action_strength(player_prefix + "move_right")) * cam_basis[2]
 	dir += (Input.get_action_strength(player_prefix + "move_backwards") - Input.get_action_strength(player_prefix + "move_forward")) * cam_basis[0] 
@@ -107,7 +108,6 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		var sharp_turn = hspeed > 0.1 and rad2deg(acos(dir.dot(hdir))) > sharp_turn_threshold
-		
 		if dir.length() > 0.1 and !sharp_turn:
 			if hspeed > 0.001:
 				hdir = adjust_facing(hdir, dir, delta, 1.0 / hspeed * TURN_SPEED, Vector3.UP)
@@ -124,13 +124,14 @@ func _physics_process(delta):
 		hv = hdir * hspeed
 		
 		var mesh_xform = get_node("Armature").get_transform()
+
 		var facing_mesh = -mesh_xform.basis[0].normalized()
 		facing_mesh = (facing_mesh - Vector3.UP * facing_mesh.dot(Vector3.UP)).normalized()
-		
 		if hspeed > 0:
 			facing_mesh = adjust_facing(facing_mesh, dir, delta, 1.0 / hspeed * TURN_SPEED, Vector3.UP)
 		var m3 = Basis(-facing_mesh, Vector3.UP, -facing_mesh.cross(Vector3.UP).normalized()).scaled(CHAR_SCALE)
 		get_node("Armature").set_transform(Transform(m3, mesh_xform.origin))
+		#get_node("Armature").set_transform(Transform(dir, mesh_xform.origin))
 		
 		if not jumping and jump_attempt:
 			vv = 7.0
@@ -207,6 +208,11 @@ func adjust_facing(p_facing, p_target, p_step, p_adjust_rate, current_gn):
 	ang = (ang - a) * s
 	
 	return (n * cos(ang) + t * sin(ang)) * p_facing.length()
+
+func throw_item():
+	if !carried_object:
+		return
+	carried_object.throw(throw_power)
 
 
 func _on_PickupArea_body_entered(body):

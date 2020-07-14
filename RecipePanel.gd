@@ -13,7 +13,6 @@ func _process(delta):
 	var conveyor_container = get_tree().current_scene.get_node("ConveyorPath/ConveyorContainer")
 	var conveyors = conveyor_container.get_children()
 	for conveyor in conveyors:
-		print("Creating label...")
 		var new_label = Label.new()
 		var recipe_name = conveyor.recipe_scene.get_state().get_node_name(0)
 		var msg = ''
