@@ -21,17 +21,17 @@ var movement_profiles = {
 		'deaccel': 14.0,
 		'sharp_turn_threshold': 140,
 		'max_speed': 5,
+		'throw_power': 6,
 	},
 	'powerup': {
 		'accel': 12.0,
 		'deaccel': 30.0,
 		'sharp_turn_threshold': 180,
 		'max_speed': 10,
+		'throw_power': 12,
 	},
 }
 var cur_movement = 'normal'
-
-var throw_power = 6
 
 var prev_shoot = false
 var shoot_blend = 0
@@ -245,7 +245,7 @@ func adjust_facing(p_facing, p_target, p_step, p_adjust_rate, current_gn):
 func throw_item():
 	if !carried_object:
 		return
-	carried_object.throw(throw_power)
+	carried_object.throw(movement_profiles[cur_movement]['throw_power'])
 
 
 func _on_PickupArea_body_entered(body):
