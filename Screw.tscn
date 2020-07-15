@@ -10,6 +10,7 @@ height = 0.322281
 
 [node name="Screw" type="RigidBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.76926, 0 )
+mass = 0.8
 script = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]

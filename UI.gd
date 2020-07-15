@@ -2,7 +2,7 @@ extends Control
 
 var player_prefixes = ["", "p2_"]
 var instanced_prefixes = []
-var player_instace_paths = []
+var player_instance_paths = []
 
 func create_player(prefix):
 	if prefix in instanced_prefixes:
@@ -17,7 +17,7 @@ func create_player(prefix):
 
 	item_node.player_prefix = prefix
 	item_node.rotate_y(-PI/2)
-	player_instace_paths.append(item_node.get_path())
+	player_instance_paths.append(item_node.get_path())
 
 	instanced_prefixes.append(prefix)
 
@@ -26,7 +26,7 @@ func _process(delta):
 	for item in player_panel_container.get_children():
 		item.queue_free()
 
-	for player_path in player_instace_paths:
+	for player_path in player_instance_paths:
 		var player_node = get_node(player_path)
 		var player_msg = '# ' + player_node.name
 		if player_node.carried_object:
@@ -47,6 +47,14 @@ func _process(delta):
 		var player_label = Label.new()
 		player_label.text = player_msg
 		player_panel_container.add_child(player_label)
+
+func _ready():
+	var action_events = InputMap.get_actions()
+	for action in action_events:
+		var input_events = InputMap.get_action_list(action)
+		for event in input_events:
+			# print(event.as_text())
+			pass
 
 func _input(event):
 

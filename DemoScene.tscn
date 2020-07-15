@@ -292,4 +292,3 @@ mode = 1
 [connection signal="timeout" from="ItemSpawnTimer" to="ItemSpawnTimer" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="ConveyorSpawnTimer" to="ConveyorSpawnTimer" method="_on_ConveyorSpawnTimer_timeout"]
 [connection signal="timeout" from="LevelTimer" to="." method="_on_LevelTimer_timeout"]
-[connection signal="timeout" from="knopf/Timer" to="knopf" method="_on_Timer_timeout"]

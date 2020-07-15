@@ -9,6 +9,7 @@
 extents = Vector3( 0.521067, 0.548651, 0.512235 )
 
 [node name="WoodChest" type="RigidBody"]
+mass = 3.0
 script = ExtResource( 1 )
 recipe_scenes = [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 4 ) ]
 recipe_time = 2

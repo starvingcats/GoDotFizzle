@@ -10,6 +10,7 @@ extents = Vector3( 0.501235, 0.500082, 0.515256 )
 
 [node name="WoodBlock" type="RigidBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.77296, 0 )
+mass = 2.0
 script = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
