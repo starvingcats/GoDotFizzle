@@ -10,6 +10,7 @@ height = 5.89585
 [node name="ScrewDispenser" type="RigidBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.04545, 4.66439 )
 script = ExtResource( 2 )
+timer_path = NodePath("CoolDownTimer")
 item_spawner_path = NodePath("ScrewSpawn")
 
 [node name="schraubenspenderFBX" parent="." instance=ExtResource( 1 )]
@@ -22,4 +23,6 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.6518, 1.39111 )
 
 [node name="CoolDownTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 [connection signal="timeout" from="CoolDownTimer" to="." method="_on_CoolDownTimer_timeout"]

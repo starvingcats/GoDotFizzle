@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://kaffeautomatFBX.tscn" type="PackedScene" id=1]
+[ext_resource path="res://CoffeeMachine.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.278808, 0.450806, 0.302625 )
+
+[node name="CoffeeMachine" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.45255, 0 )
+script = ExtResource( 2 )
+timer_path = NodePath("CoolDownTimer")
+
+[node name="kaffeautomatFBX" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="CoolDownTimer" type="Timer" parent="."]
+wait_time = 5.0

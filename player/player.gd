@@ -14,10 +14,23 @@ var linear_velocity = Vector3()
 var jumping = false
 
 var air_idle_deaccel = false
-var accel = 5.0
-var deaccel = 14.0
-var sharp_turn_threshold = 140
-var max_speed = 5
+
+var movement_profiles = {
+	'normal': {
+		'accel': 5.0,
+		'deaccel': 14.0,
+		'sharp_turn_threshold': 140,
+		'max_speed': 5,
+	},
+	'powerup': {
+		'accel': 12.0,
+		'deaccel': 30.0,
+		'sharp_turn_threshold': 180,
+		'max_speed': 10,
+	},
+}
+var cur_movement = 'normal'
+
 var throw_power = 6
 
 var prev_shoot = false
@@ -31,6 +44,8 @@ var player_prefix = ''
 
 var press_button = null
 var press_dispenser = null
+
+var interact_object = null
 
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
@@ -51,10 +66,8 @@ func _input(event):
 	if Input.is_action_just_pressed(player_prefix + "craft"):
 		if transfer_slot != null and transfer_slot.can_craft == true:
 			transfer_slot.craft(self)
-		elif press_button != null:
-			press_button.execute()
-		elif press_dispenser != null:
-			press_dispenser.execute()
+		elif interact_object != null:
+			interact_object.action(self)
 
 	if Input.is_action_just_pressed(player_prefix + "pick_up"):
 		if pickitem != null and carried_object == null:
@@ -108,17 +121,17 @@ func _physics_process(delta):
 	var shoot_attempt = Input.is_action_pressed(player_prefix + "shoot")
 	
 	if is_on_floor():
-		var sharp_turn = hspeed > 0.1 and rad2deg(acos(dir.dot(hdir))) > sharp_turn_threshold
+		var sharp_turn = hspeed > 0.1 and rad2deg(acos(dir.dot(hdir))) > movement_profiles[cur_movement]['sharp_turn_threshold']
 		if dir.length() > 0.1 and !sharp_turn:
 			if hspeed > 0.001:
 				hdir = adjust_facing(hdir, dir, delta, 1.0 / hspeed * TURN_SPEED, Vector3.UP)
 			else:
 				hdir = dir
 			
-			if hspeed < max_speed:
-				hspeed += accel * delta
+			if hspeed < movement_profiles[cur_movement]['max_speed']:
+				hspeed += movement_profiles[cur_movement]['accel'] * delta
 		else:
-			hspeed -= deaccel * delta
+			hspeed -= movement_profiles[cur_movement]['deaccel'] * delta
 			if hspeed < 0:
 				hspeed = 0
 		
@@ -141,12 +154,12 @@ func _physics_process(delta):
 		anim = ANIM_AIR
 		
 		if dir.length() > 0.1:
-			hv += dir * (accel * 0.2 * delta)
-			if hv.length() > max_speed:
-				hv = hv.normalized() * max_speed
+			hv += dir * (movement_profiles[cur_movement]['accel'] * 0.2 * delta)
+			if hv.length() > movement_profiles[cur_movement]['max_speed']:
+				hv = hv.normalized() * movement_profiles[cur_movement]['max_speed']
 		else:
 			if air_idle_deaccel:
-				hspeed = hspeed - (deaccel * 0.2 * delta)
+				hspeed = hspeed - (movement_profiles[cur_movement]['deaccel'] * 0.2 * delta)
 				if hspeed < 0:
 					hspeed = 0
 				hv = hdir * hspeed
@@ -178,13 +191,24 @@ func _physics_process(delta):
 	prev_shoot = shoot_attempt
 	
 	if is_on_floor():
-		$AnimationTree["parameters/walk/blend_amount"] = hspeed / max_speed
+		$AnimationTree["parameters/walk/blend_amount"] = hspeed / movement_profiles[cur_movement]['max_speed']
 	
 	$AnimationTree["parameters/state/current"] = anim
 	$AnimationTree["parameters/air_dir/blend_amount"] = clamp(-linear_velocity.y / 4 + 0.5, 0, 1)
 	$AnimationTree["parameters/gun/blend_amount"] = min(shoot_blend, 1.0)
 
 	check_pickup_area()
+
+func start_powerup(powerup='powerup'):
+	set_movement(powerup)
+	$PowerUpTimer.start()
+
+func set_movement(mode):
+	assert(mode in movement_profiles)
+	cur_movement = mode
+
+func reset_movement():
+	cur_movement = 'normal'
 
 func check_pickup_area():
 	var items = $Armature/Skeleton/PickupArea.get_overlapping_bodies()
@@ -227,10 +251,8 @@ func throw_item():
 func _on_PickupArea_body_entered(body):
 	if body.has_method("add_object") and !body.blocked:
 		transfer_slot = body
-	elif "knopf" in body.name:
-		press_button = body
-	elif "ScrewDispenser" in body.name:
-		press_dispenser = body
+	elif body.has_method("action"):
+		interact_object = body
 
 func _on_PickupArea_body_exited(body):
 
@@ -239,7 +261,6 @@ func _on_PickupArea_body_exited(body):
 		print("transfer out")
 		if body.crafting == true:
 			body.abort_craft()
-	elif "knopf" in body.name:
-		press_button = null
-	elif "ScrewDispenser" in body.name:
-		press_dispenser = null
+	elif body.has_method("action"):
+		interact_object = null
+
