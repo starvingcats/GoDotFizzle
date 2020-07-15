@@ -9,35 +9,35 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Spatial",
+"base": "Reference",
 "class": "BaseScene",
 "language": "GDScript",
-"path": "res://DemoScene.gd"
+"path": "res://scripts/DemoScene.gd"
 }, {
 "base": "CraftingSpot",
 "class": "ConveyorSlot",
 "language": "GDScript",
-"path": "res://ConveyorSlot.gd"
+"path": "res://scripts/ConveyorSlot.gd"
 }, {
 "base": "Node",
 "class": "CoolDownActionSpot",
 "language": "GDScript",
-"path": "res://CollDownActionSpot.gd"
+"path": "res://scripts/CollDownActionSpot.gd"
 }, {
 "base": "Spatial",
 "class": "CraftingSpot",
 "language": "GDScript",
-"path": "res://CraftingSpot.gd"
+"path": "res://scripts/CraftingSpot.gd"
 }, {
 "base": "RigidBody",
 "class": "PickableItem",
 "language": "GDScript",
-"path": "res://PickableItem.gd"
+"path": "res://scripts/PickableItem.gd"
 }, {
 "base": "PickableItem",
 "class": "RecipeItem",
 "language": "GDScript",
-"path": "res://RecipeItem.gd"
+"path": "res://scripts/RecipeItem.gd"
 } ]
 _global_script_class_icons={
 "BaseScene": "",
@@ -52,7 +52,11 @@ _global_script_class_icons={
 
 config/name="LB_DemoTest"
 run/main_scene="res://DemoScene.tscn"
-config/icon="res://icon.png"
+boot_splash/image="res://50263729.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 1, 1, 1, 1 )
+config/icon="res://starvingcats_icon.png"
+config/windows_native_icon="res://starvingcats_icon.ico"
 
 [display]
 

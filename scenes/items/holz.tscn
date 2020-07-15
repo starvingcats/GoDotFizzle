@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/import/holz.fbx" type="PackedScene" id=1]
+[ext_resource path="res://materials/wood/wood_test.tres" type="Material" id=2]
+
+
+[node name="holz" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59778, 0 )
+
+[node name="Cube2" parent="." index="0"]
+material/0 = ExtResource( 2 )
