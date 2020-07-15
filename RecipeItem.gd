@@ -27,11 +27,3 @@ func check_objects(objects):
 		recipe_match = recipe_item_name in objectname
 	print(recipe_match)
 	return recipe_match
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

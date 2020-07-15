@@ -1,4 +1,4 @@
-extends RigidBody
+extends CoolDownActionSpot
 
 # Generic item spawner script to be used on dispenser bodies
 #
@@ -15,8 +15,6 @@ export(int, 1, 10) var item_random_count_max
 export(int, "No", "Yes") var throw_items
 export(Vector3) var throw_vector
 
-var cooling_down = false
-
 func spawn():
 	var scene = load(item_scene_path)
 	var item_node = scene.instance()
@@ -24,9 +22,7 @@ func spawn():
 	item_node.set_global_transform(get_node(item_spawner_path).global_transform)
 	return item_node
 
-func execute():
-	if cooling_down:
-		return
+func execute(player):
 	for i in range(randi() % item_random_count_max + 1):
 		var node = spawn()
 		if throw_items:
@@ -35,10 +31,3 @@ func execute():
 				throw_vector.y * randf(),
 				throw_vector.z * randf()
 			))
-
-func _ready():
-	pass
-
-
-func _on_CoolDownTimer_timeout():
-	cooling_down = false
