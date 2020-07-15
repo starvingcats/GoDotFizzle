@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/ConveyorSpawner.gd" type="Script" id=1]
+[ext_resource path="res://scenes/items/foerderband_mid.tscn" type="PackedScene" id=4]
+
+
+
+[sub_resource type="Curve3D" id=1]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 9, 3.40985, 13.4737, 0, 0, 0, 0, 0, 0, 9, 3.33167, 3.64829, 0, 0, 0, 0, 0, 0, 9, 3.35773, -0.547723, 0, 0, 0, 0, 0, 0, 9, 3.43592, -10.3471 ),
+"tilts": PoolRealArray( 0, 0, 0, 0 )
+}
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 1, 11.2424 )
+
+[node name="ConveyorPath" type="Path"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.385915, -0.474002 )
+curve = SubResource( 1 )
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ConveyorMeshContainer" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.10151, -2.18542, -8.4504 )
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="ConveyorMeshContainer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.55614, 11.6168 )
+shape = SubResource( 2 )
+
+[node name="foerderband_mid" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 1.7959 )
+
+[node name="foerderband_mid2" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 3.79503 )
+
+[node name="foerderband_mid3" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 5.78821 )
+
+[node name="foerderband_mid4" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 7.76364 )
+
+[node name="foerderband_mid5" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 9.75434 )
+
+[node name="foerderband_mid6" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 11.7165 )
+
+[node name="foerderband_mid7" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 13.6883 )
+
+[node name="foerderband_mid8" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 15.6424 )
+
+[node name="foerderband_mid9" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 17.6224 )
+
+[node name="foerderband_mid10" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 19.5805 )
+
+[node name="foerderband_mid11" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 21.5367 )
+
+[node name="ConveyorSpawner" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.58561, 3.73385, 14.2427 )
+script = ExtResource( 1 )
+
+[node name="ConveyorContainer" type="Node" parent="."]
+[connection signal="timeout" from="MoveTimer" to="ConveyorSpawner" method="_on_MoveTimer_timeout"]

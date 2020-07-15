@@ -9,35 +9,35 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Spatial",
+"base": "Reference",
 "class": "BaseScene",
 "language": "GDScript",
-"path": "res://DemoScene.gd"
+"path": "res://scripts/DemoScene.gd"
 }, {
 "base": "CraftingSpot",
 "class": "ConveyorSlot",
 "language": "GDScript",
-"path": "res://ConveyorSlot.gd"
+"path": "res://scripts/ConveyorSlot.gd"
 }, {
 "base": "Node",
 "class": "CoolDownActionSpot",
 "language": "GDScript",
-"path": "res://CollDownActionSpot.gd"
+"path": "res://scripts/CollDownActionSpot.gd"
 }, {
 "base": "Spatial",
 "class": "CraftingSpot",
 "language": "GDScript",
-"path": "res://CraftingSpot.gd"
+"path": "res://scripts/CraftingSpot.gd"
 }, {
 "base": "RigidBody",
 "class": "PickableItem",
 "language": "GDScript",
-"path": "res://PickableItem.gd"
+"path": "res://scripts/PickableItem.gd"
 }, {
 "base": "PickableItem",
 "class": "RecipeItem",
 "language": "GDScript",
-"path": "res://RecipeItem.gd"
+"path": "res://scripts/RecipeItem.gd"
 } ]
 _global_script_class_icons={
 "BaseScene": "",
