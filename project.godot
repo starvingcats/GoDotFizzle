@@ -55,7 +55,8 @@ run/main_scene="res://DemoScene.tscn"
 boot_splash/image="res://50263729.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
-config/icon="res://icon.png"
+config/icon="res://starvingcats_icon.png"
+config/windows_native_icon="res://starvingcats_icon.ico"
 
 [display]
 
