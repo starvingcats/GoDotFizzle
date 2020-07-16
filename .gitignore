@@ -10,6 +10,9 @@ bin/
 *.gdnlib
 android/
 
+# emacs ...
+*.*~
+
 # Mono-specific ignores
 .mono/
 data_*/

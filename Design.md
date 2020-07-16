@@ -75,6 +75,7 @@ Drinking coffee triples your movement and turning speed and doubles your throwin
 ### Menus and UI
 
 **TO BE DONE**
+**Scene transition handling must be checked first!**
 
 ## GoDotFizzle Levels
 
@@ -86,19 +87,19 @@ Levels should not take longer than 5 Minutes to play through.
 
 ### The output conveyor belt
 
-**TO BE DONE**
+A conveyor belt running through the whole level. A number of conveyor slots can be found running on them, representing the assembly orders. These can be built directly on the slot or on another CraftingSpot having the same recipe. Remember that CraftingSpots have a "sticky zone", in a very difficult level the player may be forced to throw the assembled items onto this conveyor belt.
 
 ### CraftingSpots
 
-**TO BE DONE**
+Machines placed in the level for the player to craft items on. A CraftingSpot is linked to one RecipeItem to be crafted on it.
 
 ### ItemDispenser
 
-**TO BE DONE**
+Players can order raw items here by interacting with them. The number of items dispensed can be randomized, items can even be thrown out.
 
 ### PowerUp places
 
-**TO BE DONE**
+Players can get into a powerup state by interacting with them.
 
 ## GoDotFizzle Game progression
 
@@ -110,11 +111,50 @@ Each level of this game should be fun for itself, nevertheless some aspects must
 
 By reaching higher scores the players gets a better rating for a finished level. New levels are unlocked by overall rating collected by a player.
 
+Unlocking level scheme by ratings may look like:
+```
+lvl2: Silver with any count of players in lvl#1
+lvl3: ( Silver with any count of players in lvl#2 ) OR ( 1 Gold rating  )
+lvl4: ( Silver with any count of players in lvl#3 ) OR ( 2 Gold ratings )
+...
+```
+
 ### Challenging the player
 
 Aspects of the game that motivate to replay a level
 
 #### Level Rating
 
+Level rating depends on score reached **and** number of players. There are three ratings to be reached for each level: bronze, silver, gold.
+
+Rating for first level may look like:
+```
+1 Player : Bronze 100, Silver 200, Gold 300
+2 Players: Bronze 150, Silver 300, Gold 500
+3 Players: Bronze 200, Silver 400, Gold 700
+4 Players: Bronze 250, Silver 500, Gold 900
+```
+
 #### Random events
 
+**TO BE DONE - YOUR IDEAS HERE**
+
+### Career mode / Campaign
+
+Unlock all levels, reach gold rating for all levels!
+
+**Story??**
+
+## GoDotFizzle Game experience
+
+Describe aspects of the overall game experience, e.g. the graphics style, colors used, sound effects and overall appereance.
+
+**TO BE DONE - YOUR IDEAS HERE**
+
+### Items sets?
+
+**TO BE DONE - YOUR IDEAS HERE**
+
+### Themes?
+
+**TO BE DONE - YOUR IDEAS HERE**
