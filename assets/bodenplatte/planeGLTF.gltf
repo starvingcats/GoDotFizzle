@@ -6,6 +6,17 @@
     "scene" : 0,
     "scenes" : [
         {
+            "extras" : {
+                "glTF2ExportSettings" : {
+                    "export_apply" : 1,
+                    "export_cameras" : 1,
+                    "export_extras" : 1,
+                    "export_format" : "GLTF_EMBEDDED",
+                    "export_lights" : 1,
+                    "export_materials" : 1,
+                    "export_yup" : 1
+                }
+            },
             "name" : "Scene",
             "nodes" : [
                 0
@@ -26,7 +37,7 @@
                 0,
                 0
             ],
-            "name" : "pbr",
+            "name" : "pbr_material",
             "normalTexture" : {
                 "index" : 0,
                 "texCoord" : 0
@@ -84,7 +95,7 @@
         {
             "bufferView" : 6,
             "mimeType" : "image/png",
-            "name" : "plane_Material.001_Metallic-plane_Material.001_Roughness"
+            "name" : "plane_Material.001_Metallic.png-plane_Material.001_Roughness.png"
         }
     ],
     "accessors" : [
