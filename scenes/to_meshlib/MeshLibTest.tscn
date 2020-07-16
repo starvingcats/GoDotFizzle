@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://materials/metal/pbr_material.material" type="Material" id=1]
 [ext_resource path="res://materials/brickOrange/brick.tres" type="Material" id=2]
 [ext_resource path="res://materials/concrete_hd/concrete.tres" type="Material" id=3]
-
+[ext_resource path="res://scenes/import/cube_from_gltf.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -41,4 +41,12 @@ material/0 = ExtResource( 3 )
 [node name="StaticBody" type="StaticBody" parent="ConcreteCube"]
 
 [node name="CollisionShape" type="CollisionShape" parent="ConcreteCube/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="NewMetalCube" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="NewMetalCube"]
+
+[node name="CollisionShape" type="CollisionShape" parent="NewMetalCube/StaticBody"]
 shape = SubResource( 2 )
