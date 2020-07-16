@@ -85,6 +85,8 @@ Describe level aspects in detail to give ideas on how to build fun levels.
 
 Good levels must force the player to think about the assembly process and plan its steps carefully. This will force players to communicate on their strategy to reach a maximum score, strongly depending on the player count and skill. 
 
+Keep in mind that the player figure is able to jump when designing levels, the third dimension may be used, conveyor belts may run on different levels for example.
+
 Levels should not take longer than 5 Minutes to play through.
 
 ### The output conveyor belt
