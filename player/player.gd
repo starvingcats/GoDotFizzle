@@ -258,7 +258,6 @@ func _on_PickupArea_body_exited(body):
 
 	if body.has_method("add_object") and !body.blocked:
 		transfer_slot = null
-		print("transfer out")
 		if body.crafting == true:
 			body.abort_craft()
 	elif body.has_method("action"):

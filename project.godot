@@ -62,7 +62,7 @@ config/windows_native_icon="res://starvingcats_icon.ico"
 
 window/size/width=1920
 window/size/height=1175
-window/vsync/vsync_via_compositor=true
+window/vsync/use_vsync=false
 
 [gdnative]
 
@@ -173,4 +173,7 @@ p2_throw={
 
 [rendering]
 
+quality/shading/force_vertex_shading.mobile=false
+quality/shading/force_lambert_over_burley.mobile=false
+quality/shading/force_blinn_over_ggx.mobile=false
 environment/default_environment="res://default_env.tres"

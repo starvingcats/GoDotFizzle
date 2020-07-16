@@ -13,10 +13,17 @@ var blocked = false
 
 
 func _ready():
-	creat_recipe_node()
+	create_recipe_node()
 	$CraftingTimer.wait_time = recipe_item_node.recipe_time
+	$HoldingPosition/CatchZone.connect("body_entered", self, "_on_CatchZone_body_entered")
 
-func creat_recipe_node():
+func _on_CatchZone_body_entered(body):
+	if carried_objects:
+		return
+	if body.has_method("pick_up") and body.holder == null:
+		body.pick_up(self)
+
+func create_recipe_node():
 	recipe_item_node = recipe_scene.instance()
 
 func add_object(object):
@@ -54,4 +61,4 @@ func _on_CraftingTimer_timeout():
 	recipe_item_node.pick_up(self)
 	crafting_player.get_node("CraftIndicator").visible = false
 	crafting_player = null
-	creat_recipe_node()
+	create_recipe_node()
