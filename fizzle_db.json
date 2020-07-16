@@ -1,0 +1,13 @@
+{
+	"GDDB_ver":"2.0",
+	"db_name":"fizzle_db",
+	"tables":[
+		{
+			"table_name":"Scores",
+			"props":[
+					{"name":"Score","type":"1","auto_increment":"0"}
+			],
+			"data":[]
+		}
+	]
+}
