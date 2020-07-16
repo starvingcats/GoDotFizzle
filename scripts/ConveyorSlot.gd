@@ -26,6 +26,7 @@ func die():
 			base_scene.finished_count += 1
 			base_scene.calc_score(item.basic_score)
 			base_scene.add_multiplier()
+		item.queue_free()
 
 	if !has_scored:
 		base_scene.sub_multiplier()
