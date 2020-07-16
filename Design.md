@@ -60,6 +60,11 @@ Example:
 A "Woodchest" is made from "3 x Woodplank" ( made from Woodblocks ... ) and "1 x Screw" on a "Workbench" using a "Wrench".
 ```
 
+#### Crafting Recipes
+
+The crafting tree should be kept flat. Do not create deep recipes requiring an intermediate product which requires intermediate products themselfes.
+
+Other words: **A scored recipe must be craftable in 2 steps maximum**
 
 ### Scoring and Combos
 
