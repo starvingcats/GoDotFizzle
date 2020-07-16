@@ -117,6 +117,46 @@
             ]
         }
     ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "drehbank_metallisch",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.1079515591263771,
+                    0.2654823362827301,
+                    0.3856520354747772,
+                    1
+                ],
+                "metallicFactor" : 0.4000000059604645,
+                "roughnessFactor" : 0.5
+            }
+        },
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "drehmaschine_metall",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    1
+                ],
+                "metallicFactor" : 1,
+                "roughnessFactor" : 0.5
+            }
+        }
+    ],
     "meshes" : [
         {
             "name" : "Cube.002",
@@ -127,7 +167,8 @@
                         "NORMAL" : 1,
                         "TEXCOORD_0" : 2
                     },
-                    "indices" : 3
+                    "indices" : 3,
+                    "material" : 0
                 }
             ]
         },
@@ -140,7 +181,8 @@
                         "NORMAL" : 5,
                         "TEXCOORD_0" : 6
                     },
-                    "indices" : 7
+                    "indices" : 7,
+                    "material" : 0
                 }
             ]
         },
@@ -179,7 +221,8 @@
                         "NORMAL" : 17,
                         "TEXCOORD_0" : 18
                     },
-                    "indices" : 19
+                    "indices" : 19,
+                    "material" : 1
                 }
             ]
         },
@@ -192,7 +235,8 @@
                         "NORMAL" : 21,
                         "TEXCOORD_0" : 22
                     },
-                    "indices" : 23
+                    "indices" : 23,
+                    "material" : 1
                 }
             ]
         },
@@ -205,7 +249,8 @@
                         "NORMAL" : 25,
                         "TEXCOORD_0" : 26
                     },
-                    "indices" : 27
+                    "indices" : 27,
+                    "material" : 0
                 }
             ]
         }

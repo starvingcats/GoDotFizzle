@@ -75,6 +75,46 @@
             ]
         }
     ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "Material.001",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.5310319066047668,
+                    0.5409902930259705,
+                    0.4169820249080658,
+                    1
+                ],
+                "metallicFactor" : 0.05000000074505806,
+                "roughnessFactor" : 0.5
+            }
+        },
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "tasse_keramik",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.12236429005861282,
+                    0.26703786849975586,
+                    0.3730309307575226,
+                    1
+                ],
+                "metallicFactor" : 0.09000000357627869,
+                "roughnessFactor" : 0.1090908944606781
+            }
+        }
+    ],
     "meshes" : [
         {
             "name" : "Cube.001",
@@ -85,7 +125,8 @@
                         "NORMAL" : 1,
                         "TEXCOORD_0" : 2
                     },
-                    "indices" : 3
+                    "indices" : 3,
+                    "material" : 0
                 }
             ]
         },
@@ -98,7 +139,8 @@
                         "NORMAL" : 5,
                         "TEXCOORD_0" : 6
                     },
-                    "indices" : 7
+                    "indices" : 7,
+                    "material" : 1
                 }
             ]
         },
@@ -111,7 +153,8 @@
                         "NORMAL" : 9,
                         "TEXCOORD_0" : 10
                     },
-                    "indices" : 11
+                    "indices" : 11,
+                    "material" : 1
                 }
             ]
         },
