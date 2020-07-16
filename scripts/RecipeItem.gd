@@ -3,7 +3,7 @@ class_name RecipeItem
 extends PickableItem
 
 export(Array, PackedScene) var recipe_scenes
-export(PackedScene) var recipe_craftingspot
+export(PackedScene) var recipe_tool
 export(int) var recipe_time
 
 export(int, "No", "Yes") var scored_recipe

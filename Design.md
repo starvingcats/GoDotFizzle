@@ -53,6 +53,14 @@ Example:
 A "Woodchest" is made from "3 x Woodplank" ( made from Woodblocks ... ) and "1 x Screw" on a "Workbench".
 ```
 
+A RecipeItem may require a tool to be crafted.
+
+Example:
+```
+A "Woodchest" is made from "3 x Woodplank" ( made from Woodblocks ... ) and "1 x Screw" on a "Workbench" using a "Wrench".
+```
+
+
 ### Scoring and Combos
 
 The players score increases for each finished item from the build list. The build list shows the assembly orders to be done by the player. Each RecipeItem has a score property which is multiplied with the current combo state to calculate the score increment.
