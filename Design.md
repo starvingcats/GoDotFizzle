@@ -10,6 +10,8 @@ Feel free to contribute to this document if you want an aspect of the game to be
 
 GoDotFizzle is a game inspired by games like "Overcooked" and "Moving Out". Each player ( up to 4 ) controls a factory worker and has to assemble products from raw mertials and intermediate products. The player figure can move arround in the level ( including jumps ), pick and drop items and interact with things placed in the level, e.g. a workbench to assemble an item. Correctly crafted items must be placed on the conveyor belt transporting these products out of the level. Each conveyor slot leaving the level is checked for a finished product from which a score is calculated. This score is multiplied with a combo mulitpicator and then added to total score. Each level playthrought is limited by a timer. When it times out the level is completed and the total score is shown.
 
+The graphics of GoDotFizzle shoud be comic- or cartoon-like, all items should be drawn and rendered in a simple manner.
+
 ## GoDotFizzle Basic features and mechanics
 
 Describe basic features of the game here.
