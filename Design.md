@@ -12,6 +12,8 @@ GoDotFizzle is a game inspired by games like "Overcooked" and "Moving Out". Each
 
 The graphics of GoDotFizzle shoud be comic- or cartoon-like, all items should be drawn and rendered in a simple manner.
 
+The main game mode is cooperative - all players work together to get one score in the end.
+
 ## GoDotFizzle Basic features and mechanics
 
 Describe basic features of the game here.
