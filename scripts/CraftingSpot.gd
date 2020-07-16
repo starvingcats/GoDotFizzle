@@ -31,6 +31,16 @@ func add_object(object):
 
 func craft(player):
 	crafting_player = player
+
+	if recipe_item_node.recipe_tool != null:
+		if !player.carried_object:
+			return
+		var player_tool_name = player.carried_object.name
+		var recipe_tool_name = recipe_item_node.recipe_tool.get_state().get_node_name(0)
+
+		if !(recipe_tool_name in player_tool_name):
+			return
+
 	if crafting == false:
 		print("Crafting...")
 		crafting_player.get_node("CraftIndicator").visible = true

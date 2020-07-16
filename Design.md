@@ -12,6 +12,8 @@ GoDotFizzle is a game inspired by games like "Overcooked" and "Moving Out". Each
 
 The graphics of GoDotFizzle shoud be comic- or cartoon-like, all items should be drawn and rendered in a simple manner.
 
+The main game mode is cooperative - all players work together to get one score in the end.
+
 ## GoDotFizzle Basic features and mechanics
 
 Describe basic features of the game here.
@@ -52,6 +54,19 @@ Example:
 ```
 A "Woodchest" is made from "3 x Woodplank" ( made from Woodblocks ... ) and "1 x Screw" on a "Workbench".
 ```
+
+A RecipeItem may require a tool to be crafted.
+
+Example:
+```
+A "Woodchest" is made from "3 x Woodplank" ( made from Woodblocks ... ) and "1 x Screw" on a "Workbench" using a "Wrench".
+```
+
+#### Crafting Recipes
+
+The crafting tree should be kept flat. Do not create deep recipes requiring an intermediate product which requires intermediate products themselfes.
+
+Other words: **A scored recipe must be craftable in 2 steps maximum**
 
 ### Scoring and Combos
 
