@@ -3,8 +3,6 @@
 [ext_resource path="res://scripts/ConveyorSpawner.gd" type="Script" id=1]
 [ext_resource path="res://scenes/items/foerderband_mid.tscn" type="PackedScene" id=4]
 
-
-
 [sub_resource type="Curve3D" id=1]
 _data = {
 "points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 9, 3.40985, 13.4737, 0, 0, 0, 0, 0, 0, 9, 3.33167, 3.64829, 0, 0, 0, 0, 0, 0, 9, 3.35773, -0.547723, 0, 0, 0, 0, 0, 0, 9, 3.43592, -10.3471 ),

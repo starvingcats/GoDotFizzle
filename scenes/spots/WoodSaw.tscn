@@ -30,4 +30,3 @@ shape = SubResource( 2 )
 
 [node name="CraftingTimer" type="Timer" parent="."]
 one_shot = true
-[connection signal="timeout" from="CraftingTimer" to="." method="_on_CraftingTimer_timeout"]

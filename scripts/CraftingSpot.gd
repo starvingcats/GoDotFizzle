@@ -16,10 +16,9 @@ func _ready():
 	create_recipe_node()
 	$CraftingTimer.wait_time = recipe_item_node.recipe_time
 	$HoldingPosition/CatchZone.connect("body_entered", self, "_on_CatchZone_body_entered")
+	$CraftingTimer.connect("timeout", self, "_on_CraftingTimer_timeout")
 
 func _on_CatchZone_body_entered(body):
-	if carried_objects:
-		return
 	if body.has_method("pick_up") and body.holder == null:
 		body.pick_up(self)
 
