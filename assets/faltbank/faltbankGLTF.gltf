@@ -206,6 +206,46 @@
             ]
         }
     ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "Material.001",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.10000000149011612,
+                    0.4000000059604645,
+                    0.4000000059604645,
+                    1
+                ],
+                "metallicFactor" : 1,
+                "roughnessFactor" : 0.800000011920929
+            }
+        },
+        {
+            "doubleSided" : true,
+            "emissiveFactor" : [
+                0,
+                0,
+                0
+            ],
+            "name" : "faltbank_metall",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    1
+                ],
+                "metallicFactor" : 1,
+                "roughnessFactor" : 0.800000011920929
+            }
+        }
+    ],
     "meshes" : [
         {
             "name" : "Cube.001",
@@ -216,7 +256,8 @@
                         "NORMAL" : 1,
                         "TEXCOORD_0" : 2
                     },
-                    "indices" : 3
+                    "indices" : 3,
+                    "material" : 0
                 }
             ]
         },
@@ -229,7 +270,8 @@
                         "NORMAL" : 5,
                         "TEXCOORD_0" : 6
                     },
-                    "indices" : 3
+                    "indices" : 3,
+                    "material" : 0
                 }
             ]
         },
@@ -242,7 +284,8 @@
                         "NORMAL" : 8,
                         "TEXCOORD_0" : 9
                     },
-                    "indices" : 10
+                    "indices" : 10,
+                    "material" : 0
                 }
             ]
         },
@@ -255,7 +298,8 @@
                         "NORMAL" : 12,
                         "TEXCOORD_0" : 13
                     },
-                    "indices" : 14
+                    "indices" : 14,
+                    "material" : 1
                 }
             ]
         },
@@ -268,7 +312,8 @@
                         "NORMAL" : 16,
                         "TEXCOORD_0" : 17
                     },
-                    "indices" : 10
+                    "indices" : 10,
+                    "material" : 0
                 }
             ]
         },
@@ -281,7 +326,8 @@
                         "NORMAL" : 19,
                         "TEXCOORD_0" : 20
                     },
-                    "indices" : 10
+                    "indices" : 10,
+                    "material" : 0
                 }
             ]
         },
@@ -294,7 +340,8 @@
                         "NORMAL" : 22,
                         "TEXCOORD_0" : 23
                     },
-                    "indices" : 24
+                    "indices" : 24,
+                    "material" : 0
                 }
             ]
         },
@@ -307,7 +354,8 @@
                         "NORMAL" : 26,
                         "TEXCOORD_0" : 27
                     },
-                    "indices" : 10
+                    "indices" : 10,
+                    "material" : 1
                 }
             ]
         },
@@ -320,7 +368,8 @@
                         "NORMAL" : 29,
                         "TEXCOORD_0" : 30
                     },
-                    "indices" : 10
+                    "indices" : 10,
+                    "material" : 1
                 }
             ]
         },
@@ -333,7 +382,8 @@
                         "NORMAL" : 32,
                         "TEXCOORD_0" : 33
                     },
-                    "indices" : 34
+                    "indices" : 34,
+                    "material" : 0
                 }
             ]
         },
@@ -346,7 +396,8 @@
                         "NORMAL" : 36,
                         "TEXCOORD_0" : 37
                     },
-                    "indices" : 34
+                    "indices" : 34,
+                    "material" : 0
                 }
             ]
         },
@@ -359,7 +410,8 @@
                         "NORMAL" : 39,
                         "TEXCOORD_0" : 40
                     },
-                    "indices" : 41
+                    "indices" : 41,
+                    "material" : 1
                 }
             ]
         }
