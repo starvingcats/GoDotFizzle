@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/items/Woodplank.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/items/Screw.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/import/kisteFBX.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/import/holzkisteGLTF.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/RecipeItem.gd" type="Script" id=4]
 [ext_resource path="res://scenes/items/Wrench.tscn" type="PackedScene" id=5]
 
@@ -18,8 +18,9 @@ recipe_time = 2
 scored_recipe = 1
 basic_score = 50
 
-[node name="kisteFBX" parent="." instance=ExtResource( 3 )]
-
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506799, 0 )
 shape = SubResource( 1 )
+
+[node name="holzkisteGLTF" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5067, 0 )
