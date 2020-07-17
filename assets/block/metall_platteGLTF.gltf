@@ -31,7 +31,7 @@
                 0,
                 0
             ],
-            "name" : "Material.001",
+            "name" : "metall_platte",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 0,
