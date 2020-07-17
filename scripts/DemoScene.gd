@@ -47,6 +47,8 @@ func _ready():
 		else:
 			db = m_db_man.get_db_by_id(db_schema)
 			db.set_db_filepath("user://saves.json")
+			print("DB filepath set, saving ...")
+			db.set_db_name("Scores")
 			db.save_db()
 			print("DB created")
 
