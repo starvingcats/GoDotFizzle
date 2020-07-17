@@ -14,6 +14,8 @@ The graphics of GoDotFizzle shoud be comic- or cartoon-like, all items should be
 
 The main game mode is cooperative - all players work together to get one score in the end.
 
+A basic storytelling element will be the "evil manager", torturing players with more and more challenging assembly orders, fast conveyor belt speeds and so on ...
+
 ## GoDotFizzle Basic features and mechanics
 
 Describe basic features of the game here.
@@ -157,6 +159,8 @@ Rating for first level may look like:
 #### Random events
 
 **TO BE DONE - YOUR IDEAS HERE**
+
+The "evil manager" can be used to communicate so events, e.g. telling the players that assembly orders have changed ( drastically ) to challenge the player by rethinking their assembly strategy.
 
 ### Career mode / Campaign
 
