@@ -268,7 +268,7 @@ script = ExtResource( 6 )
 transform = Transform( -4.37114e-08, 0, -1, 0.258819, 0.965926, -1.13133e-08, 0.965926, -0.258819, -4.2222e-08, -1, 3, -7 )
 
 [node name="ConveyorPath" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.335732, -0.474002 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181905, -0.474002 )
 
 [node name="knopf" parent="." instance=ExtResource( 13 )]
 transform = Transform( -0.999797, 0, 0.0201747, 0, 1, 0, -0.0201747, 0, -0.999797, -5.95572, 3.40494, 10.0368 )

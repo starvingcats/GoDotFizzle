@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/ConveyorSpawner.gd" type="Script" id=1]
-[ext_resource path="res://scenes/items/foerderband_mid.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/import/foerderband_endstueckGLTF.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/import/foerderband_mittelstueckGLTF.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Curve3D" id=1]
 _data = {
@@ -28,38 +29,41 @@ mode = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.55614, 11.6168 )
 shape = SubResource( 2 )
 
-[node name="foerderband_mid" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 1.7959 )
+[node name="foerderband_endstueckGLTF" parent="ConveyorMeshContainer" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 1 )
 
-[node name="foerderband_mid2" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 3.79503 )
+[node name="foerderband_endstueckGLTF2" parent="ConveyorMeshContainer" instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.53674e-07, 4.65108, 23 )
 
-[node name="foerderband_mid3" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 5.78821 )
+[node name="foerderband_mittelstueckGLTF" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 3 )
 
-[node name="foerderband_mid4" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 7.76364 )
+[node name="foerderband_mittelstueckGLTF2" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 5 )
 
-[node name="foerderband_mid5" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 9.75434 )
+[node name="foerderband_mittelstueckGLTF3" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 7 )
 
-[node name="foerderband_mid6" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 11.7165 )
+[node name="foerderband_mittelstueckGLTF4" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 9 )
 
-[node name="foerderband_mid7" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 13.6883 )
+[node name="foerderband_mittelstueckGLTF5" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 11 )
 
-[node name="foerderband_mid8" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 15.6424 )
+[node name="foerderband_mittelstueckGLTF6" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 13 )
 
-[node name="foerderband_mid9" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 17.6224 )
+[node name="foerderband_mittelstueckGLTF7" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 15 )
 
-[node name="foerderband_mid10" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 19.5805 )
+[node name="foerderband_mittelstueckGLTF8" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 17 )
 
-[node name="foerderband_mid11" parent="ConveyorMeshContainer" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52344, 21.5367 )
+[node name="foerderband_mittelstueckGLTF9" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 19 )
+
+[node name="foerderband_mittelstueckGLTF10" parent="ConveyorMeshContainer" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65108, 21 )
 
 [node name="ConveyorSpawner" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.58561, 3.73385, 14.2427 )
