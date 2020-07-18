@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/OptionsMenu.gd" type="Script" id=1]
+[ext_resource path="res://scenes/UI/CtrlPopup.tscn" type="PackedScene" id=2]
 
 [node name="OptionsMenu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -8,30 +9,30 @@ script = ExtResource( 1 )
 [node name="Control" type="Control" parent="."]
 visible = false
 margin_right = 1925.0
-margin_bottom = 1177.0
+margin_bottom = 1079.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Panel" type="Panel" parent="Control"]
 margin_right = 1925.0
-margin_bottom = 1177.0
+margin_bottom = 1088.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Buttons" type="MarginContainer" parent="Control/Panel"]
 margin_left = 4.0
-margin_top = 333.0
+margin_top = 256.0
 margin_right = 1923.0
-margin_bottom = 518.0
+margin_bottom = 672.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/Buttons"]
 margin_right = 1919.0
-margin_bottom = 185.0
+margin_bottom = 416.0
 
 [node name="Fullscreen" type="CheckButton" parent="Control/Panel/Buttons/VBoxContainer"]
 margin_right = 1919.0
@@ -44,20 +45,36 @@ margin_right = 1919.0
 margin_bottom = 84.0
 text = "Borderless"
 
-[node name="Controls" type="Button" parent="Control/Panel/Buttons/VBoxContainer"]
+[node name="Controls" type="Label" parent="Control/Panel/Buttons/VBoxContainer"]
 margin_top = 88.0
 margin_right = 1919.0
-margin_bottom = 108.0
+margin_bottom = 102.0
 text = "Controls"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+align = 1
+
+[node name="ControlsContainer" type="ScrollContainer" parent="Control/Panel/Buttons/VBoxContainer"]
+margin_top = 106.0
+margin_right = 1919.0
+margin_bottom = 368.0
+size_flags_vertical = 3
+
+[node name="ActionList" type="VBoxContainer" parent="Control/Panel/Buttons/VBoxContainer/ControlsContainer"]
+margin_right = 1919.0
+size_flags_horizontal = 3
+
+[node name="DefaultControls" type="Button" parent="Control/Panel/Buttons/VBoxContainer"]
+margin_top = 372.0
+margin_right = 1919.0
+margin_bottom = 392.0
+text = "Default Controls"
 
 [node name="Back" type="Button" parent="Control/Panel/Buttons/VBoxContainer"]
-margin_top = 112.0
+margin_top = 396.0
 margin_right = 1919.0
-margin_bottom = 132.0
+margin_bottom = 416.0
 text = "Back"
+
+[node name="Popup" parent="Control" instance=ExtResource( 2 )]
 [connection signal="pressed" from="Control/Panel/Buttons/VBoxContainer/Fullscreen" to="." method="_on_Fullscreen_pressed"]
 [connection signal="pressed" from="Control/Panel/Buttons/VBoxContainer/Borderless" to="." method="_on_Borderless_pressed"]
 [connection signal="pressed" from="Control/Panel/Buttons/VBoxContainer/Back" to="." method="_on_Back_pressed"]

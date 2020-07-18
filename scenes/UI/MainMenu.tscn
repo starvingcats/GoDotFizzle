@@ -59,7 +59,7 @@ text = "Quit"
 
 [node name="Panel" type="Panel" parent="."]
 margin_right = 1928.0
-margin_bottom = 1180.0
+margin_bottom = 1080.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

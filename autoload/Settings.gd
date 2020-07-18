@@ -22,7 +22,7 @@ var VolumeMusic:float = 0.0 setget set_volume_music
 var VolumeSFX:float = 0.0 setget set_volume_sfx
 var VolumeRange:float = 24 + 80
 #CONTROLS
-var Actions:Array = ["Right", "Left", "Up", "Down", "Jump"]
+var Actions:Array = []
 var ActionControls:Dictionary = {}
 #Localization
 onready var Language:String = TranslationServer.get_locale() setget set_language
@@ -32,9 +32,20 @@ var Language_list:Array = Language_dictionary.keys()
 var CONFIG_FILE:String = "user://settings.save"
 var Settings_loaded:bool = false
 
+func init_actions():
+	var valid_actions = []
+	for action_base in InputMap.get_actions():
+		if "ui_" in action_base:
+			continue
+		valid_actions.append(action_base)
+	Actions = valid_actions
+
 func _ready()->void:
 	if OS.get_name() == "HTML5":
 		HTML5 = true
+		
+	init_actions()
+
 	get_resolution()
 	load_settings()
 	get_volumes()
