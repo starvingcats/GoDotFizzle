@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/FadeLayer.gd" type="Script" id=1]
+[ext_resource path="res://autoload/Game/Game.gd" type="Script" id=2]
+[ext_resource path="res://scenes/UI/PauseLayer.tscn" type="PackedScene" id=4]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="FadeLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="FadeLayer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = -1.41422
+margin_right = 1929.0
+margin_bottom = 1175.59
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeTween" type="Tween" parent="FadeLayer"]
+
+[node name="PauseLayer" parent="." instance=ExtResource( 4 )]
+[connection signal="tween_completed" from="FadeLayer/FadeTween" to="." method="_on_FadeTween_tween_completed"]

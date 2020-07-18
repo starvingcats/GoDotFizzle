@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=1]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 1 )
+First_Level = "res://levels/DemoScene.tscn"
+
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+
+[node name="Start" type="Button" parent="MenuLayer"]
+margin_left = 769.619
+margin_top = 406.805
+margin_right = 1300.62
+margin_bottom = 728.805
+text = "Start!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Add_Controller" type="Button" parent="MenuLayer"]
+margin_left = 951.741
+margin_top = 742.542
+margin_right = 1098.74
+margin_bottom = 762.542
+text = "Add Controller Player"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MenuLayer"]
+margin_left = 988.283
+margin_top = 339.276
+margin_right = 1066.28
+margin_bottom = 353.276
+text = "GoDotFizzle"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1928.0
+margin_bottom = 1180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="MenuLayer/Start" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="MenuLayer/Add_Controller" to="." method="_on_Add_Controller_pressed"]

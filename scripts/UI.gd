@@ -5,6 +5,7 @@ var instanced_prefixes = []
 var player_instance_paths = []
 
 func create_player(prefix):
+	return
 	if prefix in instanced_prefixes:
 		return
 
@@ -55,32 +56,3 @@ func _ready():
 		for event in input_events:
 			# print(event.as_text())
 			pass
-
-func _input(event):
-
-	if !get_tree().current_scene.players_init:
-
-		for prefix in player_prefixes:
-			if Input.is_action_just_pressed(prefix + "pause_menu"):
-				create_player(prefix)
-				get_tree().current_scene.players_init = true
-				get_node("PlayerSelectionNotice").hide()
-				get_tree().paused = false
-	else:
-
-		if get_tree().current_scene.game_over:
-			return
-
-		for prefix in player_prefixes:
-
-			if Input.is_action_just_pressed(prefix + "pause_menu"):
-
-				if !(prefix in instanced_prefixes):
-					create_player(prefix)
-				else:
-					if !get_tree().paused:
-						get_tree().current_scene.get_node("UI/PausePopup").popup_centered()
-						get_tree().paused = true
-					else:
-						get_tree().current_scene.get_node("UI/PausePopup").hide()
-						get_tree().paused = false
