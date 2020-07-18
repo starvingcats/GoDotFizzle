@@ -14,8 +14,11 @@ var registered_player_prefixes = [""]
 
 var instanced_prefixes = []
 var player_instance_paths = []
-var players_init = true
 
+var level_finished = false
+
+var m_db_man = null
+var db = null
 
 func _ready()->void:
 	MenuEvent.connect("Options",	self, "on_Options")
@@ -25,6 +28,9 @@ func _ready()->void:
 	#Background async loader
 	SceneLoader.connect("scene_loaded", self, "on_scene_loaded")
 	GuiBrain.gui_collect_focusgroup()
+
+	Event.connect("LevelFinished", 	self, "on_level_finished")
+	init_db()
 
 func on_ChangeScene(scene)->void:
 	if FadeState != IDLE:
@@ -59,6 +65,16 @@ func restart_scene()->void:
 		return
 	get_tree().reload_current_scene()
 
+func on_level_finished(scene):
+
+	var scores_table = db.get_table_by_name("Scores")
+	scores_table.add_row([scene.total_score])
+	db.save_db()
+
+	level_finished = true
+	$PauseLayer/Control/MarginContainer/VBoxContainer/ScoreContainer/ScoreNum.text = str(scene.total_score)
+	MenuEvent.Paused = true
+
 func _on_FadeTween_tween_completed(object, key)->void:
 	match FadeState:
 		IDLE:
@@ -74,3 +90,27 @@ func _on_FadeTween_tween_completed(object, key)->void:
 		FADEIN:
 			FadeState = IDLE
 
+func init_db():
+	m_db_man = load(gddb_constants.c_addon_main_path + "core/db_man.gd").new()
+
+	var file = File.new()
+	var error = file.open("user://saves.json", File.READ)
+	file.close()
+	if error == OK:
+		print("User db found, using ...")
+		var res = m_db_man.load_database("user://saves.json")
+		db = m_db_man.get_db_by_id(res)
+	else:
+		print("Error opening file!")
+		print("Database not found in user directory, creating ...")
+		var db_schema = m_db_man.load_database("res://fizzle_db.json")
+		if db_schema < 0:
+			print("Schema not found, aborting ...")
+			return
+		else:
+			db = m_db_man.get_db_by_id(db_schema)
+			db.set_db_filepath("user://saves.json")
+			print("DB filepath set, saving ...")
+			db.set_db_name("Scores")
+			db.save_db()
+			print("DB created")

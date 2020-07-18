@@ -207,7 +207,7 @@ _global_script_class_icons={
 [application]
 
 config/name="LB_DemoTest"
-run/main_scene="res://levels/DemoScene.tscn"
+run/main_scene="res://scenes/UI/MainMenu.tscn"
 boot_splash/image="res://50263729.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
@@ -225,11 +225,14 @@ Settings="*res://autoload/Settings.gd"
 Event="*res://autoload/Event.gd"
 GuiBrain="*res://autoload/guiBrain.gd"
 Game="*res://autoload/Game/Game.tscn"
+Hud="*res://autoload/Game/HUD.tscn"
 
 [display]
 
 window/size/width=1920
-window/size/height=1175
+window/size/height=1080
+window/stretch/mode="2d"
+window/stretch/aspect="keep_width"
 
 [editor_plugins]
 

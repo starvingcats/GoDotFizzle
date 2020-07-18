@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="PlayerPanel" type="Panel"]
+margin_left = 715.474
+margin_top = 1117.26
+margin_right = 1381.47
+margin_bottom = 1174.26
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 1.0
+margin_top = 6.05615
+margin_right = 668.0
+margin_bottom = 50.0562

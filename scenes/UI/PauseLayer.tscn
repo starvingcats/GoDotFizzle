@@ -26,6 +26,25 @@ margin_right = 1928.0
 margin_bottom = 1180.0
 alignment = 1
 
+[node name="ScoreContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+visible = false
+margin_top = 523.0
+margin_right = 1928.0
+margin_bottom = 537.0
+alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/ScoreContainer"]
+margin_left = 938.0
+margin_right = 977.0
+margin_bottom = 14.0
+text = "Score:"
+
+[node name="ScoreNum" type="Label" parent="Control/MarginContainer/VBoxContainer/ScoreContainer"]
+margin_left = 981.0
+margin_right = 989.0
+margin_bottom = 14.0
+text = "0"
+
 [node name="Resume" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 margin_top = 532.0
 margin_right = 1928.0

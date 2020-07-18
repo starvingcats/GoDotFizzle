@@ -14,6 +14,9 @@ func on_show_paused(value:bool)->void:
 	$Control.visible = value
 	get_tree().paused = value
 
+	$Control/MarginContainer/VBoxContainer/Resume.disabled = Game.level_finished
+	$Control/MarginContainer/VBoxContainer/ScoreContainer.visible = Game.level_finished
+
 func on_show_options(value:bool)->void:
 	if !MenuEvent.MainMenu:
 		$Control.visible = !value

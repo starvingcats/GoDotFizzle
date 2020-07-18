@@ -24,6 +24,9 @@ func create_player(prefix):
 
 func _process(delta):
 	var player_panel_container = get_node("PlayerPanel/HBoxContainer")
+
+	return
+
 	for item in player_panel_container.get_children():
 		item.queue_free()
 

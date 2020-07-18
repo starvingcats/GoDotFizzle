@@ -1,0 +1,61 @@
+[gd_scene format=2]
+
+[node name="ScorePanel" type="Panel"]
+margin_left = 1610.0
+margin_top = 3.0
+margin_right = 1913.0
+margin_bottom = 128.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConveyorCount" type="Label" parent="GridContainer"]
+margin_right = 116.0
+margin_bottom = 14.0
+text = "Conveyor Count: 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FinishedCount" type="Label" parent="GridContainer"]
+margin_top = 18.0
+margin_right = 116.0
+margin_bottom = 32.0
+text = "Finished Count: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemCount" type="Label" parent="GridContainer"]
+margin_top = 36.0
+margin_right = 116.0
+margin_bottom = 50.0
+text = "Item Count: 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="GridContainer"]
+margin_top = 54.0
+margin_right = 116.0
+margin_bottom = 68.0
+text = "Score: 0"
+
+[node name="ComboBonus" type="Label" parent="GridContainer"]
+margin_top = 72.0
+margin_right = 116.0
+margin_bottom = 86.0
+text = "Combo x : 1.0"
+
+[node name="LevelTime" type="Label" parent="GridContainer"]
+margin_top = 90.0
+margin_right = 116.0
+margin_bottom = 104.0
+text = "Time left: 120 s"

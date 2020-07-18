@@ -35,7 +35,7 @@ func _unhandled_input(event)->void:
 		if !MenuEvent.MainMenu:			#not in main menu
 			if !MenuEvent.Paused:
 				MenuEvent.Paused = true
-			elif !MenuEvent.Options:
+			elif !MenuEvent.Options and !Game.level_finished:
 				MenuEvent.Paused = false
 	elif FocusDetect.get_focus_owner() != null:	#There's already button in focus
 		return

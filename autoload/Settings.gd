@@ -14,7 +14,7 @@ var GameResolution:Vector2
 var WindowResolution:Vector2
 var ScreenResolution:Vector2
 var ScreenAspectRatio:float
-var Scale:int = 3 setget set_scale
+var Scale:int = 1 setget set_scale
 var MaxScale:int
 #AUDIO
 var VolumeMaster:float = 0.0 setget set_volume_master
@@ -44,6 +44,7 @@ func _ready()->void:
 
 #RESOLUTION
 func set_fullscreen(value:bool)->void:
+	print("fullscreen!", value)
 	Fullscreen = value
 	OS.window_fullscreen = value
 	WindowResolution = OS.window_size
@@ -64,15 +65,16 @@ func get_resolution()->void:
 	MaxScale = ceil(ScreenResolution.y/ GameResolution.y)
 
 func set_scale(value:int)->void:
-	Scale = clamp(value, 1, MaxScale)
-	if Scale >= MaxScale:
-		OS.window_fullscreen = true
-		Fullscreen = true
-	else:
-		OS.window_fullscreen = false
-		Fullscreen = false
-		OS.window_size = GameResolution * Scale
-		OS.center_window()
+	#Scale = clamp(value, 1, MaxScale)
+	#if Scale > MaxScale and !Fullscreen:
+	#	OS.window_fullscreen = true
+	#	Fullscreen = true
+	#elif !Fullscreen:
+	#	OS.window_fullscreen = false
+	#	Fullscreen = false
+	#	OS.window_size = GameResolution * Scale
+	#	OS.center_window()
+	Scale = 1
 	get_resolution()
 	emit_signal("Resized")
 #AUDIO

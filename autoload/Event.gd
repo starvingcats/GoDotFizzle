@@ -6,3 +6,5 @@ signal Resume
 signal Restart
 signal ChangeScene
 signal Exit
+
+signal LevelFinished

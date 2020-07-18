@@ -4,6 +4,7 @@ export (String, FILE, "*.tscn") var First_Level: String
 
 func _ready():
 	MenuEvent.MainMenu = true
+	Hud.visible = false
 	GuiBrain.gui_collect_focusgroup()
 
 func _on_Button_pressed():
@@ -17,3 +18,9 @@ func _exit_tree()->void:
 func _on_Add_Controller_pressed():
 	if not "p2_" in Game.registered_player_prefixes:
 		Game.registered_player_prefixes.append("p2_")
+
+func _on_Quit_pressed():
+	Event.emit_signal("Exit")
+
+func _on_Options_pressed():
+	MenuEvent.Options = true

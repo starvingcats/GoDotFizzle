@@ -8,35 +8,54 @@ First_Level = "res://levels/DemoScene.tscn"
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 
-[node name="Start" type="Button" parent="MenuLayer"]
-margin_left = 769.619
-margin_top = 406.805
-margin_right = 1300.62
-margin_bottom = 728.805
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer"]
+margin_left = 643.392
+margin_top = 240.312
+margin_right = 1394.39
+margin_bottom = 876.312
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MenuLayer/VBoxContainer"]
+margin_right = 750.0
+margin_bottom = 14.0
+text = "GoDotFizzle"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="MenuLayer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 750.0
+margin_bottom = 564.0
+size_flags_vertical = 3
 text = "Start!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Add_Controller" type="Button" parent="MenuLayer"]
-margin_left = 951.741
-margin_top = 742.542
-margin_right = 1098.74
-margin_bottom = 762.542
+[node name="Add_Controller" type="Button" parent="MenuLayer/VBoxContainer"]
+margin_top = 568.0
+margin_right = 750.0
+margin_bottom = 588.0
 text = "Add Controller Player"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MenuLayer"]
-margin_left = 988.283
-margin_top = 339.276
-margin_right = 1066.28
-margin_bottom = 353.276
-text = "GoDotFizzle"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Options" type="Button" parent="MenuLayer/VBoxContainer"]
+margin_top = 592.0
+margin_right = 750.0
+margin_bottom = 612.0
+text = "Options"
+
+[node name="Quit" type="Button" parent="MenuLayer/VBoxContainer"]
+margin_top = 616.0
+margin_right = 750.0
+margin_bottom = 636.0
+text = "Quit"
 
 [node name="Panel" type="Panel" parent="."]
 margin_right = 1928.0
@@ -44,5 +63,7 @@ margin_bottom = 1180.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="MenuLayer/Start" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="MenuLayer/Add_Controller" to="." method="_on_Add_Controller_pressed"]
+[connection signal="pressed" from="MenuLayer/VBoxContainer/Start" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="MenuLayer/VBoxContainer/Add_Controller" to="." method="_on_Add_Controller_pressed"]
+[connection signal="pressed" from="MenuLayer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="MenuLayer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
