@@ -26,10 +26,14 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer"]
-margin_right = 119.0
+margin_right = 72.0
 margin_bottom = 40.0
 
-[node name="Message" type="Label" parent="MarginContainer/Panel/MarginContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer"]
+margin_right = 14.0
+margin_bottom = 14.0
+
+[node name="Message" type="Label" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/PanelContainer"]
 margin_top = 13.0
 margin_right = 61.0
 margin_bottom = 27.0

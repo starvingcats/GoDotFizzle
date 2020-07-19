@@ -13,55 +13,67 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-margin_left = 643.392
-margin_top = 240.312
-margin_right = 1394.39
-margin_bottom = 876.312
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+margin_right = 1925.0
+margin_bottom = 1077.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
-margin_right = 750.0
-margin_bottom = 14.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer"]
+margin_right = 1925.0
+margin_bottom = 1077.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer2"]
+margin_top = 261.0
+margin_right = 1925.0
+margin_bottom = 275.0
+size_flags_vertical = 6
 text = "GoDotFizzle"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Start" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 18.0
-margin_right = 750.0
-margin_bottom = 564.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer2"]
+margin_top = 540.0
+margin_right = 1925.0
+margin_bottom = 1077.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
+margin_right = 1925.0
+margin_bottom = 465.0
 size_flags_vertical = 3
 text = "Start!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Add_Controller" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 568.0
-margin_right = 750.0
-margin_bottom = 588.0
+[node name="Add_Controller" type="Button" parent="Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
+margin_top = 469.0
+margin_right = 1925.0
+margin_bottom = 489.0
 text = "Add Controller Player"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 592.0
-margin_right = 750.0
-margin_bottom = 612.0
+[node name="Options" type="Button" parent="Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
+margin_top = 493.0
+margin_right = 1925.0
+margin_bottom = 513.0
 text = "Options"
 
-[node name="Quit" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 616.0
-margin_right = 750.0
-margin_bottom = 636.0
+[node name="Quit" type="Button" parent="Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
+margin_top = 517.0
+margin_right = 1925.0
+margin_bottom = 537.0
 text = "Quit"
-[connection signal="pressed" from="Panel/VBoxContainer/Start" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Add_Controller" to="." method="_on_Add_Controller_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer2/VBoxContainer/Start" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer2/VBoxContainer/Add_Controller" to="." method="_on_Add_Controller_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer2/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer2/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
