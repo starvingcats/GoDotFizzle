@@ -6,7 +6,7 @@ You play as a factory worker, your tasks is to assemble different items on a con
 Assembling can be very simple , e.g. awooden chest, or very complex, e.g. a car.
 The time to assemble stuff is limited by the speed of the conveyor belt, recipes require a different amount of steps to be assembled.
 
-A more detailled design paper will be done in a separate file.
+A more detailled design paper can be found [here](Design.md)
 
 Check out the project page of this repository on current progress, feel free to contribute to everything!
 
