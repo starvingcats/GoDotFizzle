@@ -40,4 +40,6 @@ func _on_Cancel_pressed():
 func retranslate()->void:
 	find_node("Cancel").text = tr("CANCEL")
 	find_node("Message").text = tr("USE_NEW_CONTROLS")
-	
+
+func _on_Popup_popup_hide():
+	_on_Cancel_pressed()

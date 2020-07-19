@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 onready var ActionList:VBoxContainer = find_node("ActionList") #Find node to keep it flexible
-onready var Pop:Popup = find_node("Popup")
+onready var Pop:Popup = Game.get_node("PopUpLayer/Popup")
 var ActionBind:PackedScene = preload("res://scenes/UI/ActionBind.tscn")
 var ControlBind:PackedScene = preload("res://scenes/UI/ControlBind.tscn")
 var ActionNamePath:String = "Name" #find_node()
