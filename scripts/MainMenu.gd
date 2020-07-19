@@ -15,10 +15,6 @@ func _exit_tree()->void:
 	MenuEvent.MainMenu = false				#switch bool for easier pause menu detection and more
 	GuiBrain.gui_collect_focusgroup()	#Force re-collect buttons because main meno wont be there
 
-func _on_Add_Controller_pressed():
-	if not "p2_" in Game.registered_player_prefixes:
-		Game.registered_player_prefixes.append("p2_")
-
 func _on_Quit_pressed():
 	Event.emit_signal("Exit")
 

@@ -24,6 +24,10 @@ var VolumeRange:float = 24 + 80
 #CONTROLS
 var Actions:Array = []
 var ActionControls:Dictionary = {}
+
+#CUSTOM
+var PlayerCount:int = 1
+
 #Localization
 onready var Language:String = TranslationServer.get_locale() setget set_language
 var Language_dictionary:Dictionary = {EN = "en", DE = "de", ES = "es", FR = "fr", SE = "sv_SE", BR = "pt_BR", LV = "lv", IT = "it"} #Font doesn't have Cyrillic letters for russian
@@ -39,6 +43,7 @@ func init_actions():
 			continue
 		valid_actions.append(action_base)
 	Actions = valid_actions
+	Actions.sort()
 
 func _ready()->void:
 	if OS.get_name() == "HTML5":
@@ -167,7 +172,8 @@ func get_save_data()->Dictionary:
 		inputs = get_input_data(),
 		resolution = get_resolution_data(),
 		audio = get_audio_data(),
-		language = {locale = TranslationServer.get_locale()}
+		language = {locale = TranslationServer.get_locale()},
+		playercount = PlayerCount
 		}
 	return savedata
 
@@ -209,6 +215,8 @@ func set_save_data(save_data:Dictionary)->void:
 		set_audio_data(save_data.audio)
 	if save_data.has("language"):
 		set_language(save_data.language.locale)
+	if save_data.has("playercount"):
+		PlayerCount = save_data.playercount
 
 func set_ActionControlls_default()->void:
 	for action_name in Actions:

@@ -22,55 +22,75 @@ __meta__ = {
 }
 
 [node name="Buttons" type="MarginContainer" parent="Control/Panel"]
-margin_left = 4.0
+margin_left = 16.0
 margin_top = 256.0
-margin_right = 1923.0
+margin_right = 1904.0
 margin_bottom = 672.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/Buttons"]
-margin_right = 1919.0
+margin_right = 1888.0
 margin_bottom = 416.0
 
 [node name="Fullscreen" type="CheckButton" parent="Control/Panel/Buttons/VBoxContainer"]
-margin_right = 1919.0
+margin_right = 1888.0
 margin_bottom = 40.0
 text = "Fullscreen"
 
 [node name="Borderless" type="CheckButton" parent="Control/Panel/Buttons/VBoxContainer"]
 margin_top = 44.0
-margin_right = 1919.0
+margin_right = 1888.0
 margin_bottom = 84.0
 text = "Borderless"
 
-[node name="Controls" type="Label" parent="Control/Panel/Buttons/VBoxContainer"]
+[node name="PlayerCount" type="HBoxContainer" parent="Control/Panel/Buttons/VBoxContainer"]
 margin_top = 88.0
-margin_right = 1919.0
-margin_bottom = 102.0
+margin_right = 1888.0
+margin_bottom = 112.0
+
+[node name="Label" type="Label" parent="Control/Panel/Buttons/VBoxContainer/PlayerCount"]
+margin_top = 5.0
+margin_right = 1810.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Player Count"
+
+[node name="PlayerCountNum" type="SpinBox" parent="Control/Panel/Buttons/VBoxContainer/PlayerCount"]
+margin_left = 1814.0
+margin_right = 1888.0
+margin_bottom = 24.0
+min_value = 1.0
+max_value = 2.0
+value = 1.0
+
+[node name="Controls" type="Label" parent="Control/Panel/Buttons/VBoxContainer"]
+margin_top = 116.0
+margin_right = 1888.0
+margin_bottom = 130.0
 text = "Controls"
 align = 1
 
 [node name="ControlsContainer" type="ScrollContainer" parent="Control/Panel/Buttons/VBoxContainer"]
-margin_top = 106.0
-margin_right = 1919.0
+margin_top = 134.0
+margin_right = 1888.0
 margin_bottom = 368.0
 size_flags_vertical = 3
 
 [node name="ActionList" type="VBoxContainer" parent="Control/Panel/Buttons/VBoxContainer/ControlsContainer"]
-margin_right = 1919.0
+margin_right = 1888.0
 size_flags_horizontal = 3
 
 [node name="Default" type="Button" parent="Control/Panel/Buttons/VBoxContainer"]
 margin_top = 372.0
-margin_right = 1919.0
+margin_right = 1888.0
 margin_bottom = 392.0
 text = "Default Controls"
 
 [node name="Back" type="Button" parent="Control/Panel/Buttons/VBoxContainer"]
 margin_top = 396.0
-margin_right = 1919.0
+margin_right = 1888.0
 margin_bottom = 416.0
 text = "Back"
 
@@ -78,5 +98,6 @@ text = "Back"
 mouse_filter = 1
 [connection signal="pressed" from="Control/Panel/Buttons/VBoxContainer/Fullscreen" to="." method="_on_Fullscreen_pressed"]
 [connection signal="pressed" from="Control/Panel/Buttons/VBoxContainer/Borderless" to="." method="_on_Borderless_pressed"]
+[connection signal="value_changed" from="Control/Panel/Buttons/VBoxContainer/PlayerCount/PlayerCountNum" to="." method="_on_SpinBox_value_changed"]
 [connection signal="pressed" from="Control/Panel/Buttons/VBoxContainer/Default" to="." method="_on_Default_pressed"]
 [connection signal="pressed" from="Control/Panel/Buttons/VBoxContainer/Back" to="." method="_on_Back_pressed"]

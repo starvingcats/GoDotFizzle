@@ -8,9 +8,9 @@ onready var CurrentScene = null
 var NextScene
 var FadeState:int = IDLE
 
-var player_prefixes = ["", "p2_"]
+var player_prefixes = ["p1_", "p2_"]
 
-var registered_player_prefixes = [""]
+var registered_player_prefixes = ["p1_"]
 
 var instanced_prefixes = []
 var player_instance_paths = []
@@ -33,6 +33,9 @@ func _ready()->void:
 	init_db()
 
 func on_ChangeScene(scene)->void:
+	registered_player_prefixes = []
+	for index in range(Settings.PlayerCount):
+		registered_player_prefixes.append(player_prefixes[index])
 	if FadeState != IDLE:
 		return
 	if Settings.HTML5:

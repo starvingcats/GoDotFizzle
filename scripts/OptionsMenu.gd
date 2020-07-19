@@ -18,13 +18,13 @@ func _ready()->void:
 	MenuEvent.Controls = false
 	set_resolution()
 	set_action_list()
+	find_node("PlayerCountNum").value = Settings.PlayerCount
 
 func on_show_options(value:bool)->void:
 	$Control.visible = value
 	MenuEvent.Controls = false
 
 func _on_Back_pressed()->void:
-	print(Settings.Fullscreen)
 	Settings.save_settings()
 	MenuEvent.Options = false
 
@@ -133,3 +133,6 @@ func _on_Default_pressed()->void:
 	for Action in ActionNodes:
 		ActionNodes[Action].queue_free()
 	set_action_list()
+
+func _on_SpinBox_value_changed(value):
+	Settings.PlayerCount = int(value)

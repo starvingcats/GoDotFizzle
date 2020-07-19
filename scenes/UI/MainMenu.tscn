@@ -46,18 +46,9 @@ __meta__ = {
 
 [node name="Start" type="Button" parent="Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
 margin_right = 1925.0
-margin_bottom = 465.0
+margin_bottom = 489.0
 size_flags_vertical = 3
 text = "Start!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Add_Controller" type="Button" parent="Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
-margin_top = 469.0
-margin_right = 1925.0
-margin_bottom = 489.0
-text = "Add Controller Player"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -74,6 +65,5 @@ margin_right = 1925.0
 margin_bottom = 537.0
 text = "Quit"
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer2/VBoxContainer/Start" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer2/VBoxContainer/Add_Controller" to="." method="_on_Add_Controller_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer2/VBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer2/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
