@@ -62,7 +62,7 @@ size_flags_vertical = 3
 margin_right = 1919.0
 size_flags_horizontal = 3
 
-[node name="DefaultControls" type="Button" parent="Control/Panel/Buttons/VBoxContainer"]
+[node name="Default" type="Button" parent="Control/Panel/Buttons/VBoxContainer"]
 margin_top = 372.0
 margin_right = 1919.0
 margin_bottom = 392.0
@@ -74,7 +74,9 @@ margin_right = 1919.0
 margin_bottom = 416.0
 text = "Back"
 
-[node name="Popup" parent="Control" instance=ExtResource( 2 )]
+[node name="Popup" parent="Control/Panel" instance=ExtResource( 2 )]
+mouse_filter = 1
 [connection signal="pressed" from="Control/Panel/Buttons/VBoxContainer/Fullscreen" to="." method="_on_Fullscreen_pressed"]
 [connection signal="pressed" from="Control/Panel/Buttons/VBoxContainer/Borderless" to="." method="_on_Borderless_pressed"]
+[connection signal="pressed" from="Control/Panel/Buttons/VBoxContainer/Default" to="." method="_on_Default_pressed"]
 [connection signal="pressed" from="Control/Panel/Buttons/VBoxContainer/Back" to="." method="_on_Back_pressed"]

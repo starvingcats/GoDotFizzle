@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 export (String, FILE, "*.tscn") var First_Level: String
 
@@ -6,7 +6,6 @@ func _ready():
 	MenuEvent.MainMenu = true
 	Hud.visible = false
 	GuiBrain.gui_collect_focusgroup()
-	Settings.get_controls()
 
 func _on_Button_pressed():
 	print(First_Level)

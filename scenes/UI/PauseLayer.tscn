@@ -8,8 +8,9 @@ script = ExtResource( 1 )
 Main_Menu = "res://scenes/UI/MainMenu.tscn"
 
 [node name="Control" type="Control" parent="."]
+visible = false
 margin_right = 1922.0
-margin_bottom = 1170.0
+margin_bottom = 1070.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
