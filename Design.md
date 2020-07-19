@@ -10,11 +10,16 @@ Feel free to contribute to this document if you want an aspect of the game to be
 
 GoDotFizzle is a game inspired by games like "Overcooked" and "Moving Out". Each player ( up to 4 ) controls a factory worker and has to assemble products from raw mertials and intermediate products. The player figure can move arround in the level ( including jumps ), pick and drop items and interact with things placed in the level, e.g. a workbench to assemble an item. Correctly crafted items must be placed on the conveyor belt transporting these products out of the level. Each conveyor slot leaving the level is checked for a finished product from which a score is calculated. This score is multiplied with a combo mulitpicator and then added to total score. Each level playthrought is limited by a timer. When it times out the level is completed and the total score is shown.
 
-The graphics of GoDotFizzle shoud be comic- or cartoon-like, all items should be drawn and rendered in a simple manner.
+The graphics of GoDotFizzle shoud be comic- or cartoon-like, all items should be drawn and rendered in a simple manner. All characters or player figures will be derived from animals - cat, dogs, monkeys and so on.
 
 The main game mode is cooperative - all players work together to get one score in the end.
 
-A basic storytelling element will be the "evil manager", torturing players with more and more challenging assembly orders, fast conveyor belt speeds and so on ...
+A basic storytelling element will be the "evil manager", torturing players with more and more challenging assembly orders, fast conveyor belt speeds and so on. The company all animals work for is called "Smile".
+
+## Name proposals
+
+- Working animals
+- Animals at work
 
 ## GoDotFizzle Basic features and mechanics
 
@@ -33,6 +38,8 @@ Players can move horizontally ( X- and Z-axis ) and jump ( Y-axis ). This allows
 ### Item pick up and drop
 
 Player figures use a collision area in front of them to monitor interactable objects. When a pickable item appears in this collision area, it can be picked up, carried arround and dropped elsewhere. It is possible to drop an item directly into a CraftingSpot. Items may also be thrown, their trajectory depends on the items weight and the players throwing power. CraftingSpots have a "sticky zone" to catch thrown items.
+
+The player figure has a "toolbelt" or mini-inventory enabling it to carry multiple items selectable over quickslots. As crafting may require certain tools which are given once per level, this will create an additional challenge for the players because the may have to share tools and communicate about it ( "Where's the hammer?!" ).
 
 ### Crafting
 
@@ -91,10 +98,25 @@ Example:
 Drinking coffee triples your movement and turning speed and doubles your throwing power.
 ```
 
-### Menus and UI
+### UI
 
 **TO BE DONE**
-**Scene transition handling must be checked first!**
+
+#### HUD
+
+#### Menus
+
+### Player figures / skins
+
+Different player skins will come with slightly altered behaviour, for example:
+
+- Chicken ( fast but stupid )
+- Ape ( can jump very high )
+- Cat
+- Dog
+- Crocodile ( can swallow one item, slower movement )
+- IceBear ( can move items with his wamp )
+- ...
 
 ## GoDotFizzle Levels
 
@@ -114,13 +136,25 @@ A conveyor belt running through the whole level. A number of conveyor slots can 
 
 Machines placed in the level for the player to craft items on. A CraftingSpot is linked to one RecipeItem to be crafted on it.
 
+When a CraftingSpot is used incorrectly it may break - blocking any crafting for a certain time, e.g. 5 seconds.
+
 ### ItemDispenser
 
 Players can order raw items here by interacting with them. The number of items dispensed can be randomized, items can even be thrown out.
 
 ### PowerUp places
 
-Players can get into a powerup state by interacting with them.
+Players can get into a powerup state by interacting with them, e.g. the coffee automat.
+
+### Special Levels
+
+#### The "Break room" levels
+
+Player figures enjoying their work break, giving chance to earn buffs / boni for next level. Random events included, e.g. boss telling there is no coffee left ( 50% movement speed loss in next round ). No tools are allowed in the break room, player have to clear their toolbelt before entering.
+
+#### Idea: Arcade levels?
+
+Switch from factory to super-simple Acrade-Look, building very crazy levels with crazy goals.
 
 ## GoDotFizzle Game progression
 
@@ -158,26 +192,60 @@ Rating for first level may look like:
 
 #### Random events
 
-**TO BE DONE - YOUR IDEAS HERE**
-
 The "evil manager" can be used to communicate so events, e.g. telling the players that assembly orders have changed ( drastically ) to challenge the player by rethinking their assembly strategy.
+
+##### Broken machines
+
+Another form of random event is a broken machine - this may happen when crafting stuff on a machine.
+
+##### Dispenser giveaway
+
+Trigger item dispenser throw items through the workshop
+
+##### Assembly order change
+
+##### Recipe change
+
+##### Drunk mode - switch controls
 
 ### Career mode / Campaign
 
 Unlock all levels, reach gold rating for all levels!
 
-**Story??**
+#### Story
+
+Become employee ( animal ) of the month?
 
 ## GoDotFizzle Game experience
 
 Describe aspects of the overall game experience, e.g. the graphics style, colors used, sound effects and overall appereance.
 
-**TO BE DONE - YOUR IDEAS HERE**
+The optical impression should be:
+- comic- / cartoon-like
+- simple but cute
+- not very detailled
 
-### Items sets?
+The gameplay experience should be:
+- fast
+- easy to learn but hard to master
+- best played in hotseat-multiplayer
 
-**TO BE DONE - YOUR IDEAS HERE**
+### Materials
 
-### Themes?
+Items crafted in the game are made from these materials
 
-**TO BE DONE - YOUR IDEAS HERE**
+- Wood
+- Metal
+
+### Themes
+
+- Factory
+- Animals
+
+#### Pause Screen
+
+Player sitting on toilet smoking
+
+#### End Screen
+
+Player standing in front a huge pile of items
