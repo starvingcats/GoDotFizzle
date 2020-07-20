@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/UI/FadeLayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://autoload/Game/Game.gd" type="Script" id=2]
+[ext_resource path="res://scenes/UI/OptionsMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/UI/PauseLayer.tscn" type="PackedScene" id=4]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="PauseLayer" parent="." instance=ExtResource( 4 )]
+layer = 100
+
+[node name="OptionsMenu" parent="." instance=ExtResource( 3 )]
+pause_mode = 2
+layer = 101
+
+[node name="FadeLayer" parent="." instance=ExtResource( 1 )]
+layer = 128
+
+[node name="FadeTween" type="Tween" parent="FadeLayer"]
+[connection signal="tween_completed" from="FadeLayer/FadeTween" to="." method="_on_FadeTween_tween_completed"]

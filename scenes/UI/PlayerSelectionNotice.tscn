@@ -12,7 +12,7 @@ margin_right = 221.0
 margin_bottom = 52.0
 
 [node name="Label" type="Label" parent="GridContainer"]
-margin_right = 234.0
+margin_right = 217.0
 margin_bottom = 48.0
 text = "KeyBoad player press ESC to start,
 

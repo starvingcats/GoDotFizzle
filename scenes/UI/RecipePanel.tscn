@@ -1,0 +1,33 @@
+[gd_scene format=2]
+
+[node name="RecipePanel" type="Panel"]
+margin_left = 1654.0
+margin_top = 146.0
+margin_right = 1902.0
+margin_bottom = 881.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 98.8538
+margin_top = 5.27808
+margin_right = 158.854
+margin_bottom = 19.2781
+text = "Build List"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_top = 22.0
+margin_right = 245.0
+margin_bottom = 732.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+__meta__ = {
+"_edit_use_anchors_": false
+}

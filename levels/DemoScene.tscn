@@ -1,0 +1,152 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://hdri/autoshop_01.jpg" type="Texture" id=1]
+[ext_resource path="res://scenes/spots/WoodSaw.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/spots/ScrewDispenser.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/items/knopf.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/spots/TurningBench.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/items/Shovel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/items/MetalBlock.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/items/Broom.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/spots/Workbench.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/spots/PowerGenerator.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/spots/CoffeeMachine.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/paths/ConveyorPath.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scripts/knopf.gd" type="Script" id=19]
+[ext_resource path="res://scripts/DemoScene.gd" type="Script" id=20]
+[ext_resource path="res://scenes/items/Woodplank.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/items/Wrench.tscn" type="PackedScene" id=24]
+[ext_resource path="res://scripts/ConveyorSpawnTimer.gd" type="Script" id=26]
+[ext_resource path="res://scripts/SpawnTimer.gd" type="Script" id=27]
+[ext_resource path="res://scripts/ItemSpawner.gd" type="Script" id=29]
+[ext_resource path="res://NewMeshibTest.meshlib" type="MeshLibrary" id=31]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ss_reflections_enabled = true
+ssao_enabled = true
+
+[node name="DemoScene" type="Spatial"]
+script = ExtResource( 20 )
+
+[node name="ItemSpawnTimer" type="Timer" parent="."]
+wait_time = 0.117
+script = ExtResource( 27 )
+
+[node name="ConveyorSpawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+script = ExtResource( 26 )
+
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 180.0
+one_shot = true
+autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="SpotLight" type="SpotLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.0265956, 0.999646, 0, -0.999646, 0.0265956, 9.01871, 11.874, 7.88353 )
+spot_range = 19.4
+spot_angle = 56.8
+
+[node name="SpotLight4" type="SpotLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.0265956, 0.999646, 0, -0.999646, 0.0265956, -1.26748, 11.874, 7.88353 )
+spot_range = 19.4
+spot_angle = 56.8
+
+[node name="SpotLight2" type="SpotLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.0265956, 0.999646, 0, -0.999646, 0.0265956, 9.01871, 11.874, -2.41384 )
+spot_range = 19.4
+spot_angle = 56.8
+
+[node name="SpotLight3" type="SpotLight" parent="Lights"]
+transform = Transform( 1, 0, 0, 0, 0.0265956, 0.999646, 0, -0.999646, 0.0265956, -1.69473, 11.874, -2.41384 )
+spot_range = 19.4
+spot_angle = 56.8
+
+[node name="PlayerSpawn" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 8 )
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 31 )
+data = {
+"cells": PoolIntArray( 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0, 2, 4, 0, 2, 5, 0, 2, 65532, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 65542, 0, 1, 131068, 0, 1, 131078, 0, 1, 196604, 0, 1, 196614, 0, 1, 262140, 0, 1, 0, 1, 3, 1, 1, 3, 2, 1, 3, 3, 1, 2, 4, 1, 2, 5, 1, 2, 65532, 1, 3, 65533, 1, 3, 65534, 1, 3, 65535, 1, 3, 65542, 1, 1, 131068, 1, 1, 131078, 1, 1, 196604, 1, 1, 196614, 1, 1, 262140, 1, 1, 0, 2, 3, 1, 2, 3, 2, 2, 3, 3, 2, 2, 4, 2, 2, 5, 2, 2, 65532, 2, 3, 65533, 2, 3, 65534, 2, 3, 65535, 2, 3, 65542, 2, 1, 131068, 2, 1, 131078, 2, 1, 196604, 2, 1, 196614, 2, 1, 262140, 2, 1, 0, 3, 3, 1, 3, 3, 2, 3, 3, 3, 3, 2, 4, 3, 2, 5, 3, 2, 6, 3, 0, 65532, 3, 3, 65533, 3, 3, 65534, 3, 3, 65535, 3, 3, 65542, 3, 1, 131068, 3, 1, 131078, 3, 1, 196604, 3, 1, 196614, 3, 1, 262140, 3, 1, 0, 4, 3, 1, 4, 3, 2, 4, 3, 3, 4, 2, 4, 4, 2, 5, 4, 2, 6, 4, 0, 65532, 4, 3, 65533, 4, 3, 65534, 4, 3, 65535, 4, 3, 65542, 4, 1, 131068, 4, 1, 131078, 4, 1, 196604, 4, 1, 196614, 4, 1, 262140, 4, 1, 0, 5, 3, 1, 5, 3, 2, 5, 3, 3, 5, 2, 4, 5, 2, 5, 5, 2, 6, 5, 0, 65532, 5, 3, 65533, 5, 3, 65534, 5, 3, 65535, 5, 3, 65542, 5, 1, 131068, 5, 1, 131078, 5, 1, 196604, 5, 1, 196614, 5, 1, 262140, 5, 1, 0, 6, 3, 1, 6, 3, 2, 6, 3, 3, 6, 2, 4, 6, 2, 5, 6, 2, 6, 6, 1, 65532, 6, 3, 65533, 6, 3, 65534, 6, 3, 65535, 6, 3, 65542, 6, 1, 131068, 6, 1, 131078, 6, 1, 196604, 6, 1, 196614, 6, 1, 262140, 6, 1, 0, 7, 3, 1, 7, 3, 2, 7, 3, 3, 7, 3, 4, 7, 3, 5, 7, 3, 65532, 7, 3, 65533, 7, 3, 65534, 7, 3, 65535, 7, 3, 0, 65531, 1, 1, 65531, 3, 2, 65531, 1, 6, 65531, 1, 65532, 65531, 1, 65533, 65531, 1, 65534, 65531, 3, 65535, 65531, 1, 65536, 65531, 1, 65537, 65531, 1, 65538, 65531, 1, 65542, 65531, 1, 131068, 65531, 1, 131069, 65531, 1, 131070, 65531, 1, 131071, 65531, 1, 131072, 65531, 1, 131073, 65531, 1, 131074, 65531, 1, 131078, 65531, 1, 196604, 65531, 1, 196605, 65531, 1, 196606, 65531, 1, 196607, 65531, 1, 196608, 65531, 1, 196609, 65531, 1, 196610, 65531, 1, 196611, 65531, 1, 196612, 65531, 1, 196613, 65531, 1, 196614, 65531, 1, 262140, 65531, 1, 262141, 65531, 1, 262142, 65531, 1, 262143, 65531, 1, 0, 65532, 3, 1, 65532, 3, 2, 65532, 3, 3, 65532, 2, 4, 65532, 2, 5, 65532, 2, 6, 65532, 2, 65532, 65532, 3, 65533, 65532, 3, 65534, 65532, 3, 65535, 65532, 3, 65542, 65532, 1, 131068, 65532, 1, 131078, 65532, 1, 196604, 65532, 1, 196614, 65532, 1, 262140, 65532, 1, 0, 65533, 3, 1, 65533, 3, 2, 65533, 3, 3, 65533, 2, 4, 65533, 2, 5, 65533, 536870914, 6, 65533, 2, 65532, 65533, 3, 65533, 65533, 3, 65534, 65533, 3, 65535, 65533, 3, 65542, 65533, 1, 131068, 65533, 1, 131078, 65533, 1, 196604, 65533, 1, 196614, 65533, 1, 262140, 65533, 1, 0, 65534, 3, 1, 65534, 3, 2, 65534, 3, 3, 65534, 2, 4, 65534, 2, 5, 65534, 2, 6, 65534, 2, 65532, 65534, 3, 65533, 65534, 3, 65534, 65534, 3, 65535, 65534, 3, 65542, 65534, 1, 131068, 65534, 1, 131078, 65534, 1, 196604, 65534, 1, 196614, 65534, 1, 262140, 65534, 1, 0, 65535, 3, 1, 65535, 3, 2, 65535, 3, 3, 65535, 2, 4, 65535, 2, 5, 65535, 2, 65532, 65535, 3, 65533, 65535, 3, 65534, 65535, 3, 65535, 65535, 3, 65542, 65535, 1, 131068, 65535, 1, 131078, 65535, 1, 196604, 65535, 1, 196614, 65535, 1, 262140, 65535, 1 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.717215, 0.696852, 0, -0.696852, 0.717215, 1.93409, 12.1295, 14.9281 )
+fov = 70.4618
+
+[node name="ItemSpawner" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25995, 5.52434, 9 )
+script = ExtResource( 29 )
+
+[node name="ItemContainer" type="Node" parent="."]
+
+[node name="Wrench" parent="ItemContainer" instance=ExtResource( 24 )]
+
+[node name="Broom" parent="ItemContainer" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0.258819, 0.965926, -1.13133e-08, 0.965926, -0.258819, -4.2222e-08, -1, 3, -7 )
+
+[node name="ConveyorPath" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181905, -0.474002 )
+
+[node name="knopf" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.999797, 0, 0.0201747, 0, 1, 0, -0.0201747, 0, -0.999797, -5.95572, 3.40494, 10.0368 )
+mode = 1
+script = ExtResource( 19 )
+timer_path = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="knopf"]
+one_shot = true
+
+[node name="ScrewDispenser" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, -4.37114e-08, 0, 1, 0, 4.37114e-08, 0, 1, 6, 7.04545, -5.33561 )
+mode = 1
+item_scene_path = "res://scenes/items/Screw.tscn"
+item_container = NodePath("../ItemContainer")
+item_random_count_max = 10
+throw_items = 1
+throw_vector = Vector3( 3, -2, 0 )
+
+[node name="TurningBench" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -4.50827, 2.49797, 1.93547 )
+mode = 1
+recipe_scene = ExtResource( 23 )
+
+[node name="WoodSaw" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2, 2.10974, -5 )
+mode = 1
+
+[node name="CoffeeMachine" parent="." instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.6751, 3.54719, 6.58513 )
+mode = 1
+
+[node name="Workbench" parent="." instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.71358, 2.76796, 4.57862 )
+mode = 1
+
+[node name="PowerGenerator" parent="." instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 4.44315, -6 )
+mode = 1
+
+[node name="Shovel" parent="." instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 4, 3.19709, -5.65298 )
+
+[node name="MetalBlock" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 7 )
+[connection signal="timeout" from="ItemSpawnTimer" to="ItemSpawnTimer" method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="ConveyorSpawnTimer" to="ConveyorSpawnTimer" method="_on_ConveyorSpawnTimer_timeout"]
+[connection signal="timeout" from="LevelTimer" to="." method="_on_LevelTimer_timeout"]
