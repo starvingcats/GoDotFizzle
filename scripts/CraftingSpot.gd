@@ -3,6 +3,7 @@ class_name CraftingSpot
 extends Spatial
 
 export(PackedScene) var recipe_scene
+export(int) var broken_time = 1
 
 var can_craft = false
 var crafting = false
@@ -17,6 +18,18 @@ func _ready():
 	$CraftingTimer.wait_time = recipe_item_node.recipe_time
 	$HoldingPosition/CatchZone.connect("body_entered", self, "_on_CatchZone_body_entered")
 	$CraftingTimer.connect("timeout", self, "_on_CraftingTimer_timeout")
+
+	$ResetTimer.wait_time = broken_time
+	$ResetTimer.connect("timeout", self, "_on_ResetTimer_timeout")
+
+func break_spot():
+	print("spot broken!")
+	blocked = true
+	$ResetTimer.start()
+
+func _on_ResetTimer_timeout():
+	print("spot unbroken!")
+	blocked = false
 
 func _on_CatchZone_body_entered(body):
 	if body.has_method("pick_up") and body.holder == null:

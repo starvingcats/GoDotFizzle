@@ -37,4 +37,7 @@ shape = SubResource( 3 )
 [node name="CraftingTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="ResetTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="timeout" from="CraftingTimer" to="." method="_on_RecipeTimer_timeout"]

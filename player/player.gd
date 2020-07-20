@@ -64,8 +64,11 @@ func _input(event):
 		throw_item()
 
 	if Input.is_action_just_pressed(player_prefix + "craft"):
-		if transfer_slot != null and transfer_slot.can_craft == true:
-			transfer_slot.craft(self)
+		if transfer_slot != null and !transfer_slot.blocked:
+			if transfer_slot.can_craft == true:
+				transfer_slot.craft(self)
+			else:
+				transfer_slot.break_spot()
 		elif interact_object != null:
 			interact_object.action(self)
 
@@ -78,11 +81,12 @@ func _input(event):
 			carried_object.pick_up(self)
 			carried_object = null
 		elif carried_object != null and transfer_slot != null:
-			carried_object.pick_up(transfer_slot)
-			carried_object = null
+			if !transfer_slot.blocked:
+				carried_object.pick_up(transfer_slot)
+				carried_object = null
 		elif carried_object == null and transfer_slot != null:
 
-			if transfer_slot.crafting:
+			if transfer_slot.crafting or transfer_slot.blocked:
 				return
 			var pick_item = transfer_slot.carried_objects.pop_front()
 			if pick_item:
