@@ -198,6 +198,7 @@ func _physics_process(delta):
 	$AnimationTree["parameters/gun/blend_amount"] = min(shoot_blend, 1.0)
 
 	check_pickup_area()
+	check_y_position()
 
 func start_powerup(powerup='powerup'):
 	set_movement(powerup)
@@ -206,6 +207,15 @@ func start_powerup(powerup='powerup'):
 func set_movement(mode):
 	assert(mode in movement_profiles)
 	cur_movement = mode
+
+func check_y_position():
+	if global_transform.origin.y < 1:
+		if $ResetTimer.is_stopped():
+			$ResetTimer.start()
+
+func reset_position():
+	global_transform.origin = get_tree().current_scene.get_node("PlayerSpawn").global_transform.origin
+	linear_velocity = Vector3.ZERO
 
 func reset_movement():
 	cur_movement = 'normal'
