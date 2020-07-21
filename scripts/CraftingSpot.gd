@@ -12,24 +12,24 @@ var recipe_item_node = null
 var carried_objects = []
 var blocked = false
 
+onready var effect_node = find_node("SmokeEffect")
 
 func _ready():
 	create_recipe_node()
 	$CraftingTimer.wait_time = recipe_item_node.recipe_time
 	$HoldingPosition/CatchZone.connect("body_entered", self, "_on_CatchZone_body_entered")
 	$CraftingTimer.connect("timeout", self, "_on_CraftingTimer_timeout")
-
 	$ResetTimer.wait_time = broken_time
 	$ResetTimer.connect("timeout", self, "_on_ResetTimer_timeout")
 
 func break_spot():
-	print("spot broken!")
 	blocked = true
 	$ResetTimer.start()
+	effect_node.visible = true
 
 func _on_ResetTimer_timeout():
-	print("spot unbroken!")
 	blocked = false
+	effect_node.visible = false
 
 func _on_CatchZone_body_entered(body):
 	if body.has_method("pick_up") and body.holder == null:

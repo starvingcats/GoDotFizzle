@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/import/holz_drehmaschineGLTF.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/CraftingSpot.gd" type="Script" id=2]
 [ext_resource path="res://scenes/items/WoodChest.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/particle/SmokeEffect.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.544742, 1.06801, 1.98877 )
@@ -22,6 +23,10 @@ shape = SubResource( 1 )
 
 [node name="HoldingPosition" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86439, 0 )
+
+[node name="SmokeEffect" parent="HoldingPosition" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44399, -0.248027, 0.0430688 )
+visible = false
 
 [node name="CatchZone" type="Area" parent="HoldingPosition"]
 

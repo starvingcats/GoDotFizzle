@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, 9.8, 0 )
+tangential_accel = 5.0
+tangential_accel_random = 1.0
+damping = 2.0
+damping_random = 1.0
+scale = 0.2
+scale_random = 0.3
+
+[sub_resource type="SphereMesh" id=4]
+
+[node name="SmokeEffect" type="Particles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.46673, 4.91197, 1.86962 )
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 4 )

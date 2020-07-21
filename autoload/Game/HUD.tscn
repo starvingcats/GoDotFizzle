@@ -12,7 +12,6 @@ script = ExtResource( 2 )
 layer = 10
 
 [node name="GUI" type="Control" parent="CanvasLayer"]
-visible = false
 margin_right = 1922.0
 margin_bottom = 1170.0
 mouse_filter = 2
@@ -21,6 +20,8 @@ __meta__ = {
 }
 
 [node name="PlayerPanel" parent="CanvasLayer/GUI" instance=ExtResource( 1 )]
+margin_top = 1006.26
+margin_bottom = 1063.26
 
 [node name="RecipePanel" parent="CanvasLayer/GUI" instance=ExtResource( 3 )]
 
