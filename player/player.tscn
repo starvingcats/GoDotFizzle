@@ -1653,7 +1653,7 @@ nodes/state/node = SubResource( 22 )
 nodes/state/position = Vector2( 440, 0 )
 nodes/walk/node = SubResource( 23 )
 nodes/walk/position = Vector2( -40, -240 )
-node_connections = [ "scale", 0, "walk", "output", 0, "gun", "state", 0, "scale", "state", 1, "air_dir", "air_dir", 0, "Animation 3", "air_dir", 1, "Animation 4", "gun", 0, "state", "gun", 1, "Animation 5", "walk", 0, "Animation", "walk", 1, "Animation 2" ]
+node_connections = [ "scale", 0, "walk", "output", 0, "gun", "state", 0, "scale", "state", 1, "air_dir", "gun", 0, "state", "gun", 1, "Animation 5", "walk", 0, "Animation", "walk", 1, "Animation 2", "air_dir", 0, "Animation 3", "air_dir", 1, "Animation 4" ]
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -1826,9 +1826,6 @@ transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.31535, 2.69259 )
 transform = Transform( 1, 0, 0, 0, -0.0171209, -0.999853, 0, 0.999853, -0.0171209, 0, -9.53674e-07, -1.42876e-09 )
 shape = SubResource( 5 )
 
-[node name="Bullet" type="Position3D" parent="Armature"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94071, 3.64079, 3.3802 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/default = SubResource( 6 )
 anims/falling-cycle = SubResource( 7 )
@@ -1896,7 +1893,12 @@ one_shot = true
 [node name="ResetTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="SprintTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 [connection signal="body_entered" from="Armature/Skeleton/PickupArea" to="." method="_on_PickupArea_body_entered"]
 [connection signal="body_exited" from="Armature/Skeleton/PickupArea" to="." method="_on_PickupArea_body_exited"]
 [connection signal="timeout" from="PowerUpTimer" to="." method="reset_movement"]
 [connection signal="timeout" from="ResetTimer" to="." method="reset_position"]
+[connection signal="timeout" from="SprintTimer" to="." method="_on_SprintTimer_timeout"]
