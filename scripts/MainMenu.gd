@@ -2,14 +2,16 @@ extends CanvasLayer
 
 export (String, FILE, "*.tscn") var First_Level: String
 
+onready var LevelSelect = Game.get_node("PopUpLayer/LevelSelect")
+
 func _ready():
 	MenuEvent.MainMenu = true
 	Hud.visible = false
 	GuiBrain.gui_collect_focusgroup()
 
 func _on_Button_pressed():
-	print(First_Level)
-	Event.emit_signal("ChangeScene", First_Level)
+	LevelSelect.popup_centered()
+	# Event.emit_signal("ChangeScene", First_Level)
 
 func _exit_tree()->void:
 	MenuEvent.MainMenu = false				#switch bool for easier pause menu detection and more

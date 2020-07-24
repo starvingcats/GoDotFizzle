@@ -29,7 +29,7 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer"]
-margin_right = 133.0
+margin_right = 72.0
 margin_bottom = 40.0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer"]
