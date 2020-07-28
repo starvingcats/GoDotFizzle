@@ -109,7 +109,7 @@ func get_InputEvent_name(event:InputEvent)->String:
 	return text
 
 func add_control(Name)->void:
-	Pop.popup()
+	Pop.popup_centered()
 	yield(Pop, "NewControl")
 	if Pop.NewEvent == null:
 		return

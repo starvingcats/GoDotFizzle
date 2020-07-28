@@ -20,14 +20,14 @@ var movement_profiles = {
 		'accel': 5.0,
 		'deaccel': 14.0,
 		'sharp_turn_threshold': 140,
-		'max_speed': 5,
+		'max_speed': 3,
 		'throw_power': 6,
 	},
 	'powerup': {
 		'accel': 12.0,
 		'deaccel': 30.0,
 		'sharp_turn_threshold': 180,
-		'max_speed': 10,
+		'max_speed': 5,
 		'throw_power': 12,
 	},
 }
@@ -47,6 +47,8 @@ var press_dispenser = null
 
 var interact_object = null
 
+var sprint = false
+
 onready var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 
 func _ready():
@@ -59,6 +61,11 @@ func _input(event):
 
 	if Input.is_action_just_pressed("test_action"):
 		print("test_action")
+
+	if Input.is_action_just_pressed(player_prefix + "sprint"):
+		if !sprint:
+			$SprintTimer.start()
+			sprint = true
 
 	if Input.is_action_just_pressed(player_prefix + "throw"):
 		throw_item()
@@ -122,8 +129,7 @@ func _physics_process(delta):
 	dir = dir.normalized()
 	
 	var jump_attempt = Input.is_action_pressed(player_prefix + "jump")
-	var shoot_attempt = Input.is_action_pressed(player_prefix + "shoot")
-	
+
 	if is_on_floor():
 		var sharp_turn = hspeed > 0.1 and rad2deg(acos(dir.dot(hdir))) > movement_profiles[cur_movement]['sharp_turn_threshold']
 		if dir.length() > 0.1 and !sharp_turn:
@@ -134,6 +140,8 @@ func _physics_process(delta):
 			
 			if hspeed < movement_profiles[cur_movement]['max_speed']:
 				hspeed += movement_profiles[cur_movement]['accel'] * delta
+			else:
+				hspeed -= movement_profiles[cur_movement]['deaccel'] * delta
 		else:
 			hspeed -= movement_profiles[cur_movement]['deaccel'] * delta
 			if hspeed < 0:
@@ -167,35 +175,29 @@ func _physics_process(delta):
 				if hspeed < 0:
 					hspeed = 0
 				hv = hdir * hspeed
-	
+
 	if jumping and vv < 0:
 		jumping = false
-	
+
+	if sprint:
+		hv = hv * 3
+		if hv.length() > 3 * movement_profiles[cur_movement]['max_speed']:
+			hv = hv.normalized() * 3 * movement_profiles[cur_movement]['max_speed']
+
 	linear_velocity = hv + Vector3.UP * vv
 	
 	if is_on_floor():
 		movement_dir = linear_velocity
 		
 	linear_velocity = move_and_slide(linear_velocity, -gravity.normalized())
-	
+
 	if shoot_blend > 0:
 		shoot_blend -= delta * SHOOT_SCALE
 		if (shoot_blend < 0):
 			shoot_blend = 0
-	
-	if shoot_attempt and not prev_shoot:
-		shoot_blend = SHOOT_TIME
-		var bullet = preload("res://player/bullet/bullet.tscn").instance()
-		bullet.set_transform(get_node("Armature/Bullet").get_global_transform().orthonormalized())
-		get_parent().add_child(bullet)
-		bullet.set_linear_velocity(get_node("Armature/Bullet").get_global_transform().basis[2].normalized() * 20)
-		bullet.add_collision_exception_with(self) # Add it to bullet.
-		get_node("SoundShoot").play()
-	
-	prev_shoot = shoot_attempt
-	
+
 	if is_on_floor():
-		$AnimationTree["parameters/walk/blend_amount"] = hspeed / movement_profiles[cur_movement]['max_speed']
+		$AnimationTree["parameters/walk/blend_amount"] = hv.length() / movement_profiles[cur_movement]['max_speed']
 	
 	$AnimationTree["parameters/state/current"] = anim
 	$AnimationTree["parameters/air_dir/blend_amount"] = clamp(-linear_velocity.y / 4 + 0.5, 0, 1)
@@ -231,7 +233,6 @@ func check_pickup_area():
 		if p_body.has_method("pick_up"):
 			pickitem = p_body
 
-
 func adjust_facing(p_facing, p_target, p_step, p_adjust_rate, current_gn):
 	var n = p_target # Normal.
 	var t = n.cross(current_gn).normalized()
@@ -261,7 +262,6 @@ func throw_item():
 		return
 	carried_object.throw(movement_profiles[cur_movement]['throw_power'])
 
-
 func _on_PickupArea_body_entered(body):
 	if body.has_method("add_object") and !body.blocked:
 		transfer_slot = body
@@ -277,3 +277,5 @@ func _on_PickupArea_body_exited(body):
 	elif body.has_method("action"):
 		interact_object = null
 
+func _on_SprintTimer_timeout():
+	sprint = false
